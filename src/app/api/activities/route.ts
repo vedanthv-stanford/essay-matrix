@@ -1,11 +1,23 @@
 import { NextResponse } from 'next/server';
+import { db } from '@/lib/db';
 
 export async function GET() {
-  // Add your logic to fetch activities
-  return NextResponse.json({ message: 'Activities fetched successfully' });
+  try {
+    const activities = await db.activity.findMany();
+    return NextResponse.json(activities);
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to fetch activities' }, { status: 500 });
+  }
 }
 
-export async function POST(request: Request) {
-  // Add your logic to create a new activity
-  return NextResponse.json({ message: 'Activity created successfully' });
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const activity = await db.activity.create({
+      data: body
+    });
+    return NextResponse.json(activity);
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to create activity' }, { status: 500 });
+  }
 } 

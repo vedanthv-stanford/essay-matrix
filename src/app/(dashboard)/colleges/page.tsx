@@ -1,7 +1,6 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Plus, Search } from 'lucide-react'
+import { Search } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 
 const colleges = [
@@ -28,7 +27,7 @@ export default function CollegesPage() {
 
       <div className="bg-gray-900 text-white p-6 rounded-lg">
         <h2 className="text-xl font-semibold mb-4">
-          Writing essays is about to get a lot easier. Let's get started:
+          Writing essays is about to get a lot easier. Let&apos;s get started:
         </h2>
         <ol className="space-y-2 text-sm">
           <li>1. Check out the <span className="text-blue-400">Background</span> tab. Spend 5 minutes reflecting there.</li>

@@ -1,11 +1,23 @@
 import { NextResponse } from 'next/server';
+import { db } from '@/lib/db';
 
 export async function GET() {
-  // Add your logic to fetch colleges
-  return NextResponse.json({ message: 'Colleges fetched successfully' });
+  try {
+    const colleges = await db.college.findMany();
+    return NextResponse.json(colleges);
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to fetch colleges' }, { status: 500 });
+  }
 }
 
-export async function POST(request: Request) {
-  // Add your logic to create a new college
-  return NextResponse.json({ message: 'College created successfully' });
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const college = await db.college.create({
+      data: body
+    });
+    return NextResponse.json(college);
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to create college' }, { status: 500 });
+  }
 } 
