@@ -49,7 +49,7 @@ const CommonAppPage = () => {
           <span className="text-xs text-muted-foreground bg-muted px-3 py-1 rounded-full">Changes saved automatically.</span>
         </div>
         {showInstructions && (
-          <div className="relative mb-6 p-4 rounded-xl bg-gradient-to-br from-indigo-50 to-purple-50 border border-primary/10">
+          <div className="relative mb-6 p-4 rounded-xl bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 border border-primary/10">
             <button
               className="absolute top-3 right-3 text-muted-foreground hover:text-primary text-lg"
               onClick={() => setShowInstructions(false)}
@@ -78,7 +78,7 @@ const CommonAppPage = () => {
         </div>
         <div className="mb-2 font-medium">Select a Common App Prompt:</div>
         <select
-          className="w-full border rounded-md px-3 py-2 mb-2 bg-white text-base focus:outline-none focus:ring-2 focus:ring-primary/30"
+          className="w-full border rounded-md px-3 py-2 mb-2 bg-card text-base focus:outline-none focus:ring-2 focus:ring-primary/30"
           value={selectedPrompt}
           onChange={handlePromptChange}
         >
@@ -95,7 +95,10 @@ const CommonAppPage = () => {
               {drafts.map((_, idx) => (
                 <button
                   key={idx}
-                  className={`px-3 py-1 rounded-t-md border-b-2 text-sm font-medium focus:outline-none ${activeDraft === idx ? 'border-primary text-primary bg-muted' : 'border-transparent text-muted-foreground bg-transparent'}`}
+                  className={`px-3 py-1 rounded-t-md border-b-2 text-sm font-medium focus:outline-none transition-colors
+                    ${activeDraft === idx
+                      ? 'border-primary text-primary bg-background dark:bg-card'
+                      : 'border-transparent text-muted-foreground bg-muted dark:bg-muted'}`}
                   onClick={() => setActiveDraft(idx)}
                   type="button"
                 >
@@ -103,7 +106,7 @@ const CommonAppPage = () => {
                 </button>
               ))}
               <button
-                className="ml-2 px-2 py-1 rounded-md border text-primary border-primary/30 text-lg font-bold hover:bg-primary/10"
+                className="ml-2 px-2 py-1 rounded-md border text-primary border-primary/30 text-lg font-bold hover:bg-primary/10 bg-muted dark:bg-muted"
                 onClick={handleAddDraft}
                 type="button"
                 aria-label="Add new draft"
@@ -112,16 +115,16 @@ const CommonAppPage = () => {
               </button>
             </div>
             <div className="flex flex-wrap gap-2 mb-2">
-              <Button type="button" className="bg-primary text-white" size="sm">Brainstorm</Button>
-              <Button type="button" className="bg-primary text-white" size="sm">Advice</Button>
-              <Button type="button" className="bg-primary text-white" size="sm">Ask Sups</Button>
+              <Button type="button" className="bg-muted text-foreground dark:bg-muted dark:text-foreground" size="sm">Brainstorm</Button>
+              <Button type="button" className="bg-muted text-foreground dark:bg-muted dark:text-foreground" size="sm">Advice</Button>
+              <Button type="button" className="bg-muted text-foreground dark:bg-muted dark:text-foreground" size="sm">Ask Sups</Button>
             </div>
             <div className="flex items-center justify-between mb-1 text-xs text-muted-foreground">
               <span>&nbsp;</span>
               <span>{wordCount} / 650 words</span>
             </div>
             <Textarea
-              className="w-full min-h-[120px] resize-vertical mb-2 bg-white/80 placeholder:italic placeholder:text-muted-foreground"
+              className="w-full min-h-[120px] resize-vertical mb-2 bg-card placeholder:italic placeholder:text-muted-foreground"
               placeholder="Start writing or click Brainstorm..."
               value={drafts[activeDraft]}
               onChange={handleDraftChange}
