@@ -141,12 +141,12 @@ const BackgroundPage = () => {
         2. This is not the time to be modest. Brag!<br />
         3. If you can&apos;t answer a question, skip it. Come back later to add more.
       </p>
-      <Card className="mb-8 bg-gradient-to-br from-indigo-50 to-purple-50 border-0 shadow-none">
-        <CardContent className="p-6">
-          <div className="mb-2 font-semibold text-lg">Upload Your Resume</div>
+      <Card className="mb-8 bg-card text-card-foreground">
+        <CardContent className="p-6 bg-card text-card-foreground">
+          <div className="mb-2 font-semibold text-lg text-card-foreground">Upload Your Resume</div>
           <div className="mb-1 text-muted-foreground text-sm">If you have a resume or background file, upload it here to help us get to know you better.</div>
           <div
-            className="flex flex-col items-center justify-center border-2 border-dashed border-primary/30 rounded-xl bg-white/60 py-8 cursor-pointer hover:bg-primary/5 transition mb-2"
+            className="flex flex-col items-center justify-center border-2 border-dashed border-primary/30 rounded-xl bg-background dark:bg-gray-900 py-8 cursor-pointer hover:bg-primary/5 dark:hover:bg-primary/10 transition mb-2"
             onClick={() => fileInputRef.current?.click()}
           >
             <input
@@ -158,13 +158,13 @@ const BackgroundPage = () => {
             />
             <div className="flex flex-col items-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
-              <span className="text-base text-primary font-medium">Choose a file or drag it here.</span>
+              <span className="text-base text-card-foreground font-medium">Choose a file or drag it here.</span>
             </div>
             {resume && (
               <div className="mt-2 text-sm text-muted-foreground">{resume.name}</div>
             )}
           </div>
-          <div className="font-semibold mt-2">Saved Files</div>
+          <div className="font-semibold mt-2 text-card-foreground">Saved Files</div>
           {/* List of saved files can go here */}
         </CardContent>
       </Card>
