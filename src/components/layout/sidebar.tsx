@@ -38,11 +38,6 @@ const navigation = [
     icon: FileText,
   },
   {
-    name: 'Professional Consulting',
-    href: '/consulting',
-    icon: Users,
-  },
-  {
     name: 'Upgrade',
     href: '/upgrade',
     icon: Zap,
