@@ -56,7 +56,7 @@ export function Sidebar({ userPlan = 'free' }: SidebarProps) {
       {/* Logo */}
       <div className="flex h-16 items-center px-6">
         <Link href="/" className="flex items-center space-x-2">
-          <div className="text-2xl font-bold text-blue-500">Sups</div>
+          <div className="text-2xl font-bold text-blue-500">Barca</div>
           {userPlan === 'free' && (
             <Badge variant="secondary" className="ml-2 text-xs">
               FREE
