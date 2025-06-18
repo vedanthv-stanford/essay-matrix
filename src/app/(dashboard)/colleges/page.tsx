@@ -32,7 +32,7 @@ export default function CollegesPage() {
         <ol className="space-y-2 text-sm">
           <li>1. Check out the <span className="text-blue-400">Background</span> tab. Spend 5 minutes reflecting there.</li>
           <li>2. Add your first college below. Click on its name to view the essay questions.</li>
-          <li>3. Use Sups to generate ideas, and then write your first rough draft.</li>
+          <li>3. Use Barca to generate ideas, and then write your first rough draft.</li>
         </ol>
       </div>
 
@@ -55,7 +55,7 @@ export default function CollegesPage() {
           </Card>
         ))}
 
-        <Card className="p-4 border-2 border-dashed border-gray-300">
+        <Card className="p-4 border-2">
           <div className="flex items-center space-x-4">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
