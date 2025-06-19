@@ -1,6 +1,4 @@
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { NextResponse } from 'next/server';
 
 // Comprehensive list of US colleges and universities
 const colleges = [
@@ -109,67 +107,27 @@ const colleges = [
   { name: 'University of New Mexico', location: 'Albuquerque, NM', type: 'Public', acceptanceRate: 96.7, tuition: 25000, enrollment: 26000 }
 ];
 
-async function main() {
-  console.log('Starting database seeding...');
-
-  // Create a test user if it doesn't exist
-  const testUser = await prisma.user.upsert({
-    where: { email: 'test@example.com' },
-    update: {},
-    create: {
-      email: 'test@example.com',
-      name: 'Test User',
-      graduationYear: 2025,
-      highSchoolName: 'Test High School',
-      intendedMajor: 'Computer Science',
-    },
-  });
-
-  console.log('Test user created/updated:', testUser.email);
-
-  // Add some sample colleges for the test user
-  const sampleColleges = [
-    { name: 'Stanford University', status: 'In Progress', priority: 1 },
-    { name: 'University of California, Berkeley', status: 'Applied', priority: 2 },
-    { name: 'Massachusetts Institute of Technology', status: 'In Progress', priority: 3 },
-  ];
-
-  for (const collegeData of sampleColleges) {
-    const collegeInfo = colleges.find(c => c.name === collegeData.name);
-    if (collegeInfo) {
-      await prisma.college.upsert({
-        where: {
-          userId_name: {
-            userId: testUser.id,
-            name: collegeData.name,
-          },
-        },
-        update: {},
-        create: {
-          userId: testUser.id,
-          name: collegeData.name,
-          status: collegeData.status,
-          priority: collegeData.priority,
-          location: collegeInfo.location,
-          type: collegeInfo.type,
-          acceptanceRate: collegeInfo.acceptanceRate,
-          tuition: collegeInfo.tuition,
-          enrollment: collegeInfo.enrollment,
-        },
-      });
+export async function GET(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const query = searchParams.get('q') || '';
+    const limit = parseInt(searchParams.get('limit') || '10');
+    
+    if (!query.trim()) {
+      return NextResponse.json([]);
     }
+
+    const searchTerm = query.toLowerCase();
+    const filteredColleges = colleges
+      .filter(college => 
+        college.name.toLowerCase().includes(searchTerm) ||
+        college.location.toLowerCase().includes(searchTerm)
+      )
+      .slice(0, limit);
+
+    return NextResponse.json(filteredColleges);
+  } catch (error) {
+    console.error('Error searching colleges:', error);
+    return NextResponse.json({ error: 'Failed to search colleges' }, { status: 500 });
   }
-
-  console.log('Sample colleges added for test user');
-
-  console.log('Seeding completed successfully!');
-}
-
-main()
-  .catch((e) => {
-    console.error('Error during seeding:', e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  }); 
+} 

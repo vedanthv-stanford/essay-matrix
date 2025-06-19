@@ -68,12 +68,21 @@ model VerificationToken {
 }
 
 model College {
-  id        String   @id @default(cuid())
-  name      String
-  userId    String
-  status    String   @default("In Progress")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id            String   @id @default(cuid())
+  name          String
+  userId        String
+  status        String   @default("In Progress") // In Progress, Applied, Accepted, Rejected, Waitlisted
+  location      String?  // City, State
+  type          String?  // Public, Private, Liberal Arts, etc.
+  acceptanceRate Float?  // Acceptance rate as percentage
+  tuition       Int?     // Annual tuition in USD
+  enrollment    Int?     // Total enrollment
+  website       String?  // College website URL
+  notes         String?  // User notes about the college
+  priority      Int?     // User's priority ranking (1 = highest)
+  deadline      DateTime? // Application deadline
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 
   user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   essays Essay[]
