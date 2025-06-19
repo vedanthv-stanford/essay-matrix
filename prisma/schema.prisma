@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -16,12 +16,12 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -86,6 +86,7 @@ model College {
 
   user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   essays Essay[]
+  essayPrompts EssayPrompt[]
 
   @@unique([userId, name])
 }
@@ -99,7 +100,7 @@ model Activity {
   description           String?
   hoursPerWeek          Int?
   weeksPerYear          Int?
-  participationGrades   String[] // ["9", "10", "11", "12", "Post-grad"]
+  participationGrades   String   // Store as JSON string for SQLite compatibility
   userId                String
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
@@ -120,6 +121,26 @@ model Essay {
 
   college College @relation(fields: [collegeId], references: [id], onDelete: Cascade)
   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model EssayPrompt {
+  id        String   @id @default(cuid())
+  title     String
+  prompt    String
+  wordLimit Int?
+  required  Boolean  @default(true)
+  category  String   // Common App, Supplemental, Why This School, Major Specific, Other
+  tips      String   // Store as JSON string for SQLite compatibility
+  year      String   // Application year (e.g., "2024-2025")
+  collegeId String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  college College? @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+
+  @@index([collegeId])
+  @@index([category])
+  @@index([year])
 }
 
 model Subscription {

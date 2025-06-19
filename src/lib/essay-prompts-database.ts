@@ -15,102 +15,18 @@ export interface EssayPrompt {
 // 2024-2025 Essay Prompts Database
 export const ESSAY_PROMPTS_2024: Record<string, EssayPrompt[]> = {
   'Harvard University': [
-    {
-      id: 'harvard-2024-1',
-      title: 'Brief Personal Essay',
-      prompt: 'Briefly describe an intellectual experience that was important to you.',
-      wordLimit: 200,
-      required: true,
-      category: 'Supplemental',
-      tips: ['Be specific about the experience', 'Show intellectual curiosity', 'Connect to your academic interests'],
-      year: '2024-2025'
-    },
-    {
-      id: 'harvard-2024-2',
-      title: 'Brief Personal Essay',
-      prompt: 'Briefly describe an intellectual experience that was important to you.',
-      wordLimit: 200,
-      required: true,
-      category: 'Supplemental',
-      tips: ['Be specific about the experience', 'Show intellectual curiosity', 'Connect to your academic interests'],
-      year: '2024-2025'
-    }
+    { id: 'harvard-2024-1', title: 'Intellectual Experience', prompt: 'Briefly describe an intellectual experience that was important to you.', wordLimit: 200, required: true, category: 'Supplemental', tips: ['Be specific about the experience', 'Show intellectual curiosity', 'Connect to your academic interests'], year: '2024-2025' },
+    { id: 'harvard-2024-2', title: 'Personal Growth', prompt: 'How have you grown over the past four years?', wordLimit: 200, required: true, category: 'Supplemental', tips: ['Show growth', 'Be honest', 'Reflect on challenges'], year: '2024-2025' }
   ],
   'Stanford University': [
-    {
-      id: 'stanford-2024-1',
-      title: 'What matters to you, and why?',
-      prompt: 'What matters to you, and why?',
-      wordLimit: 250,
-      required: true,
-      category: 'Supplemental',
-      tips: ['Be authentic', 'Show your values', 'Connect to your experiences'],
-      year: '2024-2025'
-    },
-    {
-      id: 'stanford-2024-2',
-      title: 'Briefly describe one of your extracurricular activities or work experiences.',
-      prompt: 'Briefly describe one of your extracurricular activities or work experiences.',
-      wordLimit: 150,
-      required: true,
-      category: 'Supplemental',
-      tips: ['Focus on impact and learning', 'Show leadership or initiative', 'Be specific about your role'],
-      year: '2024-2025'
-    },
-    {
-      id: 'stanford-2024-3',
-      title: 'Briefly describe one of your extracurricular activities or work experiences.',
-      prompt: 'Briefly describe one of your extracurricular activities or work experiences.',
-      wordLimit: 150,
-      required: true,
-      category: 'Supplemental',
-      tips: ['Focus on impact and learning', 'Show leadership or initiative', 'Be specific about your role'],
-      year: '2024-2025'
-    }
+    { id: 'stanford-2024-1', title: 'What matters to you, and why?', prompt: 'What matters to you, and why?', wordLimit: 250, required: true, category: 'Supplemental', tips: ['Be authentic', 'Show your values', 'Connect to your experiences'], year: '2024-2025' },
+    { id: 'stanford-2024-2', title: 'Extracurricular Activity', prompt: 'Briefly describe one of your extracurricular activities or work experiences.', wordLimit: 150, required: true, category: 'Supplemental', tips: ['Focus on impact and learning', 'Show leadership or initiative', 'Be specific about your role'], year: '2024-2025' }
   ],
   'Yale University': [
-    {
-      id: 'yale-2024-1',
-      title: 'Why Yale?',
-      prompt: 'What is it about Yale that has led you to apply?',
-      wordLimit: 125,
-      required: true,
-      category: 'Why This School',
-      tips: ['Research specific programs', 'Mention faculty or research opportunities', 'Connect to your interests'],
-      year: '2024-2025'
-    },
-    {
-      id: 'yale-2024-2',
-      title: 'Briefly describe an extracurricular activity or work experience.',
-      prompt: 'Briefly describe an extracurricular activity or work experience.',
-      wordLimit: 150,
-      required: true,
-      category: 'Supplemental',
-      tips: ['Focus on impact and learning', 'Show leadership or initiative', 'Be specific about your role'],
-      year: '2024-2025'
-    }
+    { id: 'yale-2024-1', title: 'Why Yale?', prompt: 'What is it about Yale that has led you to apply?', wordLimit: 125, required: true, category: 'Why This School', tips: ['Research specific programs', 'Mention faculty or research opportunities', 'Connect to your interests'], year: '2024-2025' }
   ],
   'Princeton University': [
-    {
-      id: 'princeton-2024-1',
-      title: 'Briefly describe an extracurricular activity or work experience.',
-      prompt: 'Briefly describe an extracurricular activity or work experience.',
-      wordLimit: 150,
-      required: true,
-      category: 'Supplemental',
-      tips: ['Focus on impact and learning', 'Show leadership or initiative', 'Be specific about your role'],
-      year: '2024-2025'
-    },
-    {
-      id: 'princeton-2024-2',
-      title: 'Briefly describe an extracurricular activity or work experience.',
-      prompt: 'Briefly describe an extracurricular activity or work experience.',
-      wordLimit: 150,
-      required: true,
-      category: 'Supplemental',
-      tips: ['Focus on impact and learning', 'Show leadership or initiative', 'Be specific about your role'],
-      year: '2024-2025'
-    }
+    { id: 'princeton-2024-1', title: 'Extracurricular Activity', prompt: 'Briefly describe an extracurricular activity or work experience.', wordLimit: 150, required: true, category: 'Supplemental', tips: ['Focus on impact and learning', 'Show leadership or initiative', 'Be specific about your role'], year: '2024-2025' }
   ],
   'Columbia University': [
     {

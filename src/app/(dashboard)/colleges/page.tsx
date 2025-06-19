@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Search, Filter, Plus, GraduationCap } from 'lucide-react'
 import Link from 'next/link'
+import { CollegeSearch } from '@/components/college-search'
 
 // Types
 interface College {
@@ -24,62 +25,7 @@ interface College {
   updatedAt: string;
 }
 
-// Mock data
-const mockColleges: College[] = [
-  {
-    id: '1',
-    name: 'Stanford University',
-    status: 'In Progress',
-    location: 'Stanford, CA',
-    type: 'Private',
-    acceptanceRate: 4.3,
-    tuition: 56169,
-    enrollment: 17000,
-    priority: 1,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  },
-  {
-    id: '2',
-    name: 'University of California, Berkeley',
-    status: 'Applied',
-    location: 'Berkeley, CA',
-    type: 'Public',
-    acceptanceRate: 14.4,
-    tuition: 44115,
-    enrollment: 42000,
-    priority: 2,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  },
-  {
-    id: '3',
-    name: 'Massachusetts Institute of Technology',
-    status: 'In Progress',
-    location: 'Cambridge, MA',
-    type: 'Private',
-    acceptanceRate: 6.7,
-    tuition: 57786,
-    enrollment: 11500,
-    priority: 3,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  },
-];
-
 const statusOptions = ['All', 'In Progress', 'Applied', 'Accepted', 'Rejected', 'Waitlisted'];
-
-// Mock components (you'll need to implement these)
-const CollegeSearch = ({ onAddCollege, existingColleges }: { onAddCollege: (data: any) => void, existingColleges: string[] }) => {
-  return (
-    <div className="space-y-4">
-      <Input placeholder="Search for colleges..." />
-      <Button onClick={() => onAddCollege({ name: 'Test College', location: 'Test, CA', type: 'Private', acceptanceRate: 10, tuition: 50000, enrollment: 10000 })}>
-        Add Test College
-      </Button>
-    </div>
-  );
-};
 
 const CollegeCard = ({ college, onUpdateStatus, onDelete, onEdit }: { 
   college: College, 
@@ -130,11 +76,33 @@ const CollegeCard = ({ college, onUpdateStatus, onDelete, onEdit }: {
 };
 
 export default function CollegesPage() {
-  const [colleges, setColleges] = useState<College[]>(mockColleges);
-  const [filteredColleges, setFilteredColleges] = useState<College[]>(mockColleges);
-  const [isLoading, setIsLoading] = useState(false);
+  const [colleges, setColleges] = useState<College[]>([]);
+  const [filteredColleges, setFilteredColleges] = useState<College[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState('All');
   const [showSearch, setShowSearch] = useState(false);
+
+  // Fetch colleges from database
+  useEffect(() => {
+    const fetchColleges = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch('/api/colleges');
+        if (response.ok) {
+          const data = await response.json();
+          setColleges(data);
+        } else {
+          console.error('Failed to fetch colleges');
+        }
+      } catch (error) {
+        console.error('Error fetching colleges:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchColleges();
+  }, []);
 
   useEffect(() => {
     filterColleges();
@@ -149,37 +117,69 @@ export default function CollegesPage() {
   };
 
   const handleAddCollege = async (collegeData: any) => {
-    const newCollege: College = {
-      id: Date.now().toString(),
-      name: collegeData.name,
-      location: collegeData.location,
-      type: collegeData.type,
-      acceptanceRate: collegeData.acceptanceRate,
-      tuition: collegeData.tuition,
-      enrollment: collegeData.enrollment,
-      status: 'In Progress',
-      priority: colleges.length + 1,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    };
+    try {
+      const response = await fetch('/api/colleges', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(collegeData),
+      });
 
-    setColleges(prev => [...prev, newCollege]);
-    setShowSearch(false);
+      if (response.ok) {
+        const newCollege = await response.json();
+        setColleges(prev => [...prev, newCollege]);
+        setShowSearch(false);
+      } else {
+        console.error('Failed to add college');
+      }
+    } catch (error) {
+      console.error('Error adding college:', error);
+    }
   };
 
   const handleUpdateStatus = async (id: string, status: string) => {
-    setColleges(prev => 
-      prev.map(college => 
-        college.id === id 
-          ? { ...college, status, updatedAt: new Date().toISOString() }
-          : college
-      )
-    );
+    try {
+      const response = await fetch(`/api/colleges/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status }),
+      });
+
+      if (response.ok) {
+        setColleges(prev => 
+          prev.map(college => 
+            college.id === id 
+              ? { ...college, status, updatedAt: new Date().toISOString() }
+              : college
+          )
+        );
+      } else {
+        console.error('Failed to update college status');
+      }
+    } catch (error) {
+      console.error('Error updating college status:', error);
+    }
   };
 
   const handleDeleteCollege = async (id: string) => {
     if (!confirm('Are you sure you want to delete this college?')) return;
-    setColleges(prev => prev.filter(college => college.id !== id));
+    
+    try {
+      const response = await fetch(`/api/colleges/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        setColleges(prev => prev.filter(college => college.id !== id));
+      } else {
+        console.error('Failed to delete college');
+      }
+    } catch (error) {
+      console.error('Error deleting college:', error);
+    }
   };
 
   const handleEditCollege = (college: College) => {
@@ -198,6 +198,22 @@ export default function CollegesPage() {
 
   const statusCounts = getStatusCounts();
 
+  if (isLoading) {
+    return (
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <h1 className="text-3xl font-bold">Welcome, Ved!</h1>
+        </div>
+        <div className="flex items-center justify-center h-64">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading colleges...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -215,15 +231,26 @@ export default function CollegesPage() {
         </ol>
       </div>
 
-      {/* Demo Notice */}
-      <Card className="p-4 bg-blue-50 border-blue-200">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-          <p className="text-sm text-blue-800">
-            <strong>Demo Mode:</strong> This is running with mock data. Set up your database to use real data persistence.
-          </p>
+      {/* College Search */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-xl font-semibold">Your Colleges</h2>
+          <Button onClick={() => setShowSearch(!showSearch)}>
+            <Plus className="h-4 w-4 mr-2" />
+            Add College
+          </Button>
         </div>
-      </Card>
+
+        {showSearch && (
+          <Card className="p-4">
+            <h3 className="text-lg font-medium mb-4">Search for a College</h3>
+            <CollegeSearch
+              onAddCollege={handleAddCollege}
+              existingColleges={colleges.map(c => c.name)}
+            />
+          </Card>
+        )}
+      </div>
 
       {/* Status Overview */}
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -234,26 +261,6 @@ export default function CollegesPage() {
           </Card>
         ))}
       </div>
-
-      {/* Search Section */}
-      {showSearch && (
-        <Card className="p-6">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold">Add a College</h2>
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              onClick={() => setShowSearch(false)}
-            >
-              Cancel
-            </Button>
-          </div>
-          <CollegeSearch
-            onAddCollege={handleAddCollege}
-            existingColleges={colleges.map(c => c.name)}
-          />
-        </Card>
-      )}
 
       {/* Filters */}
       <div className="flex items-center gap-4">
@@ -307,20 +314,6 @@ export default function CollegesPage() {
           ))
         )}
       </div>
-
-      {/* Quick Add Button */}
-      {!showSearch && colleges.length > 0 && (
-        <div className="text-center">
-          <Button 
-            variant="outline" 
-            onClick={() => setShowSearch(true)}
-            className="flex items-center gap-2"
-          >
-            <Plus className="h-4 w-4" />
-            Add Another College
-          </Button>
-        </div>
-      )}
     </div>
   );
 } 

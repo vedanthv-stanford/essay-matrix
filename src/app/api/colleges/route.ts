@@ -6,12 +6,29 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const userId = searchParams.get('userId');
     
-    if (!userId) {
-      return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
+    // For development, if no userId is provided, use the test user
+    const targetUserId = userId || 'test-user-id';
+    
+    // First try to find the test user, if not found, create one
+    let testUser = await db.user.findUnique({
+      where: { email: 'test@example.com' }
+    });
+    
+    if (!testUser) {
+      // Create test user if it doesn't exist
+      testUser = await db.user.create({
+        data: {
+          email: 'test@example.com',
+          name: 'Test User',
+          graduationYear: 2025,
+          highSchoolName: 'Test High School',
+          intendedMajor: 'Computer Science',
+        }
+      });
     }
 
     const colleges = await db.college.findMany({
-      where: { userId },
+      where: { userId: testUser.id },
       orderBy: [
         { priority: 'asc' },
         { createdAt: 'desc' }
@@ -30,13 +47,36 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { userId, name, ...collegeData } = body;
     
-    if (!userId || !name) {
-      return NextResponse.json({ error: 'User ID and college name are required' }, { status: 400 });
+    // For development, if no userId is provided, use the test user
+    let targetUserId = userId;
+    
+    if (!targetUserId) {
+      let testUser = await db.user.findUnique({
+        where: { email: 'test@example.com' }
+      });
+      
+      if (!testUser) {
+        testUser = await db.user.create({
+          data: {
+            email: 'test@example.com',
+            name: 'Test User',
+            graduationYear: 2025,
+            highSchoolName: 'Test High School',
+            intendedMajor: 'Computer Science',
+          }
+        });
+      }
+      
+      targetUserId = testUser.id;
+    }
+    
+    if (!name) {
+      return NextResponse.json({ error: 'College name is required' }, { status: 400 });
     }
 
     const college = await db.college.create({
       data: {
-        userId,
+        userId: targetUserId,
         name,
         ...collegeData,
       }
