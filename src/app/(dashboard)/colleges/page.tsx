@@ -1,38 +1,30 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { CollegeSearch } from '@/components/college-search';
-import { CollegeCard } from '@/components/college-card';
-import { Plus, GraduationCap, Filter } from 'lucide-react';
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from '@/components/ui/select';
+import { Card } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Search, Filter, Plus, GraduationCap } from 'lucide-react'
+import Link from 'next/link'
 
+// Types
 interface College {
   id: string;
   name: string;
   status: string;
-  location?: string;
-  type?: string;
-  acceptanceRate?: number;
-  tuition?: number;
-  enrollment?: number;
-  priority?: number;
-  notes?: string;
+  location: string;
+  type: string;
+  acceptanceRate: number;
+  tuition: number;
+  enrollment: number;
+  priority: number;
   createdAt: string;
   updatedAt: string;
 }
 
-const statusOptions = ['All', 'In Progress', 'Applied', 'Accepted', 'Rejected', 'Waitlisted'];
-
-// Mock data for demo purposes
+// Mock data
 const mockColleges: College[] = [
   {
     id: '1',
@@ -74,6 +66,68 @@ const mockColleges: College[] = [
     updatedAt: new Date().toISOString(),
   },
 ];
+
+const statusOptions = ['All', 'In Progress', 'Applied', 'Accepted', 'Rejected', 'Waitlisted'];
+
+// Mock components (you'll need to implement these)
+const CollegeSearch = ({ onAddCollege, existingColleges }: { onAddCollege: (data: any) => void, existingColleges: string[] }) => {
+  return (
+    <div className="space-y-4">
+      <Input placeholder="Search for colleges..." />
+      <Button onClick={() => onAddCollege({ name: 'Test College', location: 'Test, CA', type: 'Private', acceptanceRate: 10, tuition: 50000, enrollment: 10000 })}>
+        Add Test College
+      </Button>
+    </div>
+  );
+};
+
+const CollegeCard = ({ college, onUpdateStatus, onDelete, onEdit }: { 
+  college: College, 
+  onUpdateStatus: (id: string, status: string) => void, 
+  onDelete: (id: string) => void, 
+  onEdit: (college: College) => void 
+}) => {
+  return (
+    <Card className="p-4">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-4">
+          <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+            <span className="text-lg font-semibold text-gray-600">
+              {college.name.charAt(0)}
+            </span>
+          </div>
+          <div className="flex-1">
+            <h3 className="font-semibold text-lg">{college.name}</h3>
+            <p className="text-sm text-gray-600">{college.location}</p>
+            <Badge variant="secondary" className="text-xs">
+              {college.status}
+            </Badge>
+          </div>
+        </div>
+        <div className="flex items-center space-x-2">
+          <Select value={college.status} onValueChange={(status) => onUpdateStatus(college.id, status)}>
+            <SelectTrigger className="w-32">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {statusOptions.slice(1).map((status) => (
+                <SelectItem key={status} value={status}>
+                  {status}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Button variant="outline" size="sm" onClick={() => onEdit(college)}>
+            Edit
+          </Button>
+          <Button variant="outline" size="sm" onClick={() => onDelete(college.id)}>
+            Delete
+          </Button>
+        </div>
+      </div>
+    </Card>
+  );
+};
 
 export default function CollegesPage() {
   const [colleges, setColleges] = useState<College[]>(mockColleges);
@@ -147,14 +201,18 @@ export default function CollegesPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold">My Colleges</h1>
-          <p className="text-gray-600 mt-1">Manage your college applications</p>
-        </div>
-        <Button onClick={() => setShowSearch(true)} className="flex items-center gap-2">
-          <Plus className="h-4 w-4" />
-          Add College
-        </Button>
+        <h1 className="text-3xl font-bold">Welcome, Ved!</h1>
+      </div>
+
+      <div className="bg-gray-900 text-white p-6 rounded-lg">
+        <h2 className="text-xl font-semibold mb-4">
+          Writing essays is about to get a lot easier. Let&apos;s get started:
+        </h2>
+        <ol className="space-y-2 text-sm">
+          <li>1. Check out the <Link href="/background" className="text-blue-400 underline hover:text-blue-300">Background</Link> tab. Spend 5 minutes reflecting there.</li>
+          <li>2. Add your first college below. Click on its name to view the essay questions.</li>
+          <li>3. Use Barca to generate ideas, and then write your first rough draft.</li>
+        </ol>
       </div>
 
       {/* Demo Notice */}
