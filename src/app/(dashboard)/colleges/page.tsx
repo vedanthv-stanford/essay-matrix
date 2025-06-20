@@ -206,8 +206,8 @@ export default function CollegesPage() {
         </div>
         <div className="flex items-center justify-center h-64">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading colleges...</p>
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+            <p className="text-muted-foreground">Loading colleges...</p>
           </div>
         </div>
       </div>
@@ -220,12 +220,12 @@ export default function CollegesPage() {
         <h1 className="text-3xl font-bold">Welcome, Ved!</h1>
       </div>
 
-      <div className="bg-gray-900 text-white p-6 rounded-lg">
+      <div className="bg-card text-card-foreground p-6 rounded-lg border">
         <h2 className="text-xl font-semibold mb-4">
           Writing essays is about to get a lot easier. Let&apos;s get started:
         </h2>
         <ol className="space-y-2 text-sm">
-          <li>1. Check out the <Link href="/background" className="text-blue-400 underline hover:text-blue-300">Background</Link> tab. Spend 5 minutes reflecting there.</li>
+          <li>1. Check out the <Link href="/background" className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300">Background</Link> tab. Spend 5 minutes reflecting there.</li>
           <li>2. Add your first college below. Click on its name to view the essay questions.</li>
           <li>3. Use Barca to generate ideas, and then write your first rough draft.</li>
         </ol>
@@ -256,8 +256,8 @@ export default function CollegesPage() {
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
         {statusOptions.slice(1).map((status) => (
           <Card key={status} className="p-4 text-center">
-            <div className="text-2xl font-bold text-blue-600">{statusCounts[status] || 0}</div>
-            <div className="text-sm text-gray-600">{status}</div>
+            <div className="text-2xl font-bold text-foreground">{statusCounts[status] || 0}</div>
+            <div className="text-sm text-muted-foreground">{status}</div>
           </Card>
         ))}
       </div>
@@ -265,7 +265,7 @@ export default function CollegesPage() {
       {/* Filters */}
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-2">
-          <Filter className="h-4 w-4 text-gray-500" />
+          <Filter className="h-4 w-4 text-muted-foreground" />
           <span className="text-sm font-medium">Filter by status:</span>
         </div>
         <Select value={statusFilter} onValueChange={setStatusFilter}>
@@ -286,11 +286,11 @@ export default function CollegesPage() {
       <div className="space-y-4">
         {filteredColleges.length === 0 ? (
           <Card className="p-8 text-center">
-            <GraduationCap className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 mb-2">
+            <GraduationCap className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+            <h3 className="text-lg font-medium text-foreground mb-2">
               {colleges.length === 0 ? 'No colleges added yet' : 'No colleges match your filter'}
             </h3>
-            <p className="text-gray-600 mb-4">
+            <p className="text-muted-foreground mb-4">
               {colleges.length === 0 
                 ? 'Start building your college list by adding your first university.'
                 : 'Try adjusting your filters to see more colleges.'

@@ -25,9 +25,9 @@ interface HeaderProps {
 
 export function Header({ user, userPlan = 'free' }: HeaderProps) {
   const planColors = {
-    free: 'bg-gray-100 text-gray-800',
-    pro: 'bg-blue-100 text-blue-800',
-    enterprise: 'bg-purple-100 text-purple-800'
+    free: 'bg-muted text-muted-foreground',
+    pro: 'bg-primary text-primary-foreground',
+    enterprise: 'bg-secondary text-secondary-foreground'
   }
 
   const planLabels = {
@@ -37,7 +37,7 @@ export function Header({ user, userPlan = 'free' }: HeaderProps) {
   }
 
   return (
-    <header className="bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-800">
+    <header className="bg-background border-b border-border">
       <div className="flex h-16 items-center px-6">
         <div className="flex-1">
           <h1 className="text-xl font-semibold">Dashboard</h1>
