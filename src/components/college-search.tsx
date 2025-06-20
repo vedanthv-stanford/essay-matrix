@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
 interface College {
   name: string;
@@ -88,7 +89,7 @@ export function CollegeSearch({ onAddCollege, existingColleges }: CollegeSearchP
   return (
     <div className="relative" ref={searchRef}>
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
         <Input
           placeholder="Search for a university..."
           value={query}
@@ -102,7 +103,7 @@ export function CollegeSearch({ onAddCollege, existingColleges }: CollegeSearchP
               setQuery('');
               setShowResults(false);
             }}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
           >
             <X className="h-4 w-4" />
           </button>
@@ -113,9 +114,9 @@ export function CollegeSearch({ onAddCollege, existingColleges }: CollegeSearchP
         <Card className="absolute top-full left-0 right-0 mt-1 z-50 max-h-96 overflow-y-auto shadow-lg">
           <div className="p-2">
             {isLoading ? (
-              <div className="p-4 text-center text-gray-500">Searching...</div>
+              <div className="p-4 text-center text-muted-foreground">Searching...</div>
             ) : results.length === 0 ? (
-              <div className="p-4 text-center text-gray-500">
+              <div className="p-4 text-center text-muted-foreground">
                 {query.trim().length >= 2 ? 'No colleges found' : 'Start typing to search...'}
               </div>
             ) : (
@@ -125,25 +126,26 @@ export function CollegeSearch({ onAddCollege, existingColleges }: CollegeSearchP
                   return (
                     <div
                       key={index}
-                      className={`p-3 rounded-lg border cursor-pointer transition-colors ${
+                      className={cn(
+                        'p-3 rounded-lg border cursor-pointer transition-colors',
                         isAlreadyAdded
-                          ? 'bg-gray-50 border-gray-200 cursor-not-allowed'
-                          : 'hover:bg-gray-50 border-transparent'
-                      }`}
+                          ? 'bg-muted/50 border-border cursor-not-allowed'
+                          : 'hover:bg-accent border-transparent'
+                      )}
                       onClick={() => !isAlreadyAdded && handleAddCollege(college)}
                     >
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
-                            <h4 className="font-medium text-sm">{college.name}</h4>
+                            <h4 className="font-medium text-sm text-foreground">{college.name}</h4>
                             {isAlreadyAdded && (
                               <Badge variant="secondary" className="text-xs">
                                 Added
                               </Badge>
                             )}
                           </div>
-                          <p className="text-xs text-gray-600 mb-1">{college.location}</p>
-                          <div className="flex items-center gap-4 text-xs text-gray-500">
+                          <p className="text-xs text-muted-foreground mb-1">{college.location}</p>
+                          <div className="flex items-center gap-4 text-xs text-muted-foreground">
                             <span>{college.type}</span>
                             {college.acceptanceRate && (
                               <span>{college.acceptanceRate}% acceptance</span>

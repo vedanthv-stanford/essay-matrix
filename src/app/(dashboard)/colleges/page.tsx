@@ -37,14 +37,14 @@ const CollegeCard = ({ college, onUpdateStatus, onDelete, onEdit }: {
     <Card className="p-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-            <span className="text-lg font-semibold text-gray-600">
+          <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center">
+            <span className="text-lg font-semibold text-muted-foreground">
               {college.name.charAt(0)}
             </span>
           </div>
           <div className="flex-1">
             <h3 className="font-semibold text-lg">{college.name}</h3>
-            <p className="text-sm text-gray-600">{college.location}</p>
+            <p className="text-sm text-muted-foreground">{college.location}</p>
             <Badge variant="secondary" className="text-xs">
               {college.status}
             </Badge>
