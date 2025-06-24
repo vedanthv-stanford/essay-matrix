@@ -2,6 +2,7 @@
 
 import { Sidebar } from './sidebar'
 import { Header } from './header'
+import { Footer } from './footer'
 
 interface DashboardLayoutProps {
   children: React.ReactNode
@@ -20,6 +21,7 @@ export function DashboardLayout({
         <main className="flex-1 overflow-x-hidden overflow-y-auto bg-background p-6">
           {children}
         </main>
+        <Footer />
       </div>
     </div>
   )

@@ -9,6 +9,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Search, Filter, Plus, GraduationCap } from 'lucide-react'
 import Link from 'next/link'
 import { CollegeSearch } from '@/components/college-search'
+import { CollegeLogo } from '@/components/ui/college-logo';
+import { findCollegeDomain } from '@/lib/college-domains';
 
 // Types
 interface College {
@@ -33,17 +35,27 @@ const CollegeCard = ({ college, onUpdateStatus, onDelete, onEdit }: {
   onDelete: (id: string) => void, 
   onEdit: (college: College) => void 
 }) => {
+  // Get domain for the college
+  const collegeDomain = findCollegeDomain(college.name);
   return (
     <Card className="p-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center">
-            <span className="text-lg font-semibold text-muted-foreground">
-              {college.name.charAt(0)}
-            </span>
-          </div>
+          {/* College Logo */}
+          <CollegeLogo 
+            collegeName={college.name}
+            domain={collegeDomain || undefined}
+            size={40}
+          />
           <div className="flex-1">
-            <h3 className="font-semibold text-lg">{college.name}</h3>
+            <h3 className="font-semibold text-lg flex items-center gap-2">
+              {college.name}
+              {college.priority && (
+                <Badge variant="outline" className="text-xs">
+                  Priority {college.priority}
+                </Badge>
+              )}
+            </h3>
             <p className="text-sm text-muted-foreground">{college.location}</p>
             <Badge variant="secondary" className="text-xs">
               {college.status}

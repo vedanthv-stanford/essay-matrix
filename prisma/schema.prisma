@@ -70,6 +70,7 @@ model VerificationToken {
 model College {
   id            String   @id @default(cuid())
   name          String
+  domain        String?
   userId        String
   status        String   @default("In Progress") // In Progress, Applied, Accepted, Rejected, Waitlisted
   location      String?  // City, State

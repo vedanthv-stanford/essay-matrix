@@ -12,6 +12,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { CollegeLogo } from '@/components/ui/college-logo';
+import { findCollegeDomain } from '@/lib/college-domains';
 
 interface College {
   id: string;
@@ -26,6 +28,7 @@ interface College {
   notes?: string;
   createdAt: string;
   updatedAt: string;
+  website?: string;
 }
 
 interface CollegeCardProps {
@@ -78,23 +81,19 @@ export function CollegeCard({ college, onUpdateStatus, onDelete, onEdit }: Colle
     return new Intl.NumberFormat('en-US').format(num);
   };
 
-  const getInitials = (name: string) => {
-    return name
-      .split(' ')
-      .map(word => word[0])
-      .join('')
-      .toUpperCase()
-      .slice(0, 2);
-  };
+  // Get domain for the college
+  const collegeDomain = findCollegeDomain(college.name);
 
   return (
     <Card className="hover:shadow-md transition-shadow">
       <CardContent className="p-4">
         <div className="flex items-start justify-between">
           <div className="flex items-start space-x-4 flex-1">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-semibold text-lg">
-              {getInitials(college.name)}
-            </div>
+            <CollegeLogo 
+              collegeName={college.name}
+              domain={collegeDomain || undefined}
+              size={48}
+            />
             
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-1">
@@ -110,7 +109,7 @@ export function CollegeCard({ college, onUpdateStatus, onDelete, onEdit }: Colle
                 <p className="text-sm text-gray-600 mb-2">{college.location}</p>
               )}
               
-              <div className="flex items-center gap-4 mb-2">
+              <div className="flex items-center gap-2 mb-2">
                 <Select
                   value={college.status}
                   onValueChange={handleStatusChange}

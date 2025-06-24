@@ -7,7 +7,7 @@ export async function PUT(
 ) {
   try {
     const body = await request.json();
-    const id = await context.params.id;
+    const id = context.params.id;
 
     const college = await db.college.update({
       where: { id },
@@ -30,7 +30,7 @@ export async function PATCH(
 ) {
   try {
     const body = await request.json();
-    const id = await context.params.id;
+    const id = context.params.id;
 
     const college = await db.college.update({
       where: { id },
@@ -52,7 +52,7 @@ export async function DELETE(
   context: { params: { id: string } }
 ) {
   try {
-    const id = await context.params.id;
+    const id = context.params.id;
 
     await db.college.delete({
       where: { id },
