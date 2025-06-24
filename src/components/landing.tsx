@@ -3,6 +3,8 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sun, Moon } from "lucide-react";
+import { SignInButton, SignUpButton, useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 function DarkModeToggle() {
   const [isDark, setIsDark] = React.useState(false);
@@ -40,6 +42,15 @@ function DarkModeToggle() {
 }
 
 export default function Landing() {
+  const { isSignedIn } = useUser();
+  const router = useRouter();
+
+  React.useEffect(() => {
+    if (isSignedIn) {
+      router.push("/colleges");
+    }
+  }, [isSignedIn, router]);
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen relative">
       <DarkModeToggle />
@@ -49,12 +60,12 @@ export default function Landing() {
         <span className="block mx-auto">Get started by signing up or logging in.</span>
       </p>
       <div className="flex gap-4">
-        <Link href="/colleges" passHref legacyBehavior>
+        <SignUpButton mode="modal">
           <Button>Sign Up</Button>
-        </Link>
-        <Link href="/colleges" passHref legacyBehavior>
+        </SignUpButton>
+        <SignInButton mode="modal">
           <Button className="dark:bg-white dark:text-black">Log In</Button>
-        </Link>
+        </SignInButton>
       </div>
     </div>
   );

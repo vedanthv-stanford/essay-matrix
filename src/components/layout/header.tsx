@@ -13,17 +13,15 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { User, Settings, LogOut, CreditCard, Moon, Sun } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { useUser, SignOutButton } from '@clerk/nextjs'
 
 interface HeaderProps {
-  user?: {
-    name?: string | null
-    email?: string | null
-    image?: string | null
-  }
   userPlan?: 'free' | 'pro' | 'enterprise'
 }
 
-export function Header({ user, userPlan = 'free' }: HeaderProps) {
+export function Header({ userPlan = 'free' }: HeaderProps) {
+  const { user, isSignedIn } = useUser();
+  
   const planColors = {
     free: 'bg-muted text-muted-foreground',
     pro: 'bg-primary text-primary-foreground',
@@ -34,6 +32,10 @@ export function Header({ user, userPlan = 'free' }: HeaderProps) {
     free: 'Free',
     pro: 'Pro',
     enterprise: 'Enterprise'
+  }
+
+  if (!isSignedIn) {
+    return null; // Don't show header if not signed in
   }
 
   return (
@@ -51,9 +53,9 @@ export function Header({ user, userPlan = 'free' }: HeaderProps) {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                 <Avatar className="h-8 w-8">
-                  <AvatarImage src={user?.image || ''} alt={user?.name || ''} />
+                  <AvatarImage src={user?.imageUrl || ''} alt={user?.fullName || ''} />
                   <AvatarFallback>
-                    {user?.name?.charAt(0) || 'U'}
+                    {user?.firstName?.charAt(0) || user?.emailAddresses[0]?.emailAddress?.charAt(0) || 'U'}
                   </AvatarFallback>
                 </Avatar>
               </Button>
@@ -61,9 +63,11 @@ export function Header({ user, userPlan = 'free' }: HeaderProps) {
             <DropdownMenuContent className="w-56" align="end" forceMount>
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">{user?.name}</p>
+                  <p className="text-sm font-medium leading-none">
+                    {user?.fullName || user?.firstName || 'User'}
+                  </p>
                   <p className="text-xs leading-none text-muted-foreground">
-                    {user?.email}
+                    {user?.emailAddresses[0]?.emailAddress || 'No email'}
                   </p>
                 </div>
               </DropdownMenuLabel>
@@ -81,10 +85,12 @@ export function Header({ user, userPlan = 'free' }: HeaderProps) {
                 Settings
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <LogOut className="mr-2 h-4 w-4" />
-                Log out
-              </DropdownMenuItem>
+              <SignOutButton redirectUrl="/landing">
+                <DropdownMenuItem>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  Log out
+                </DropdownMenuItem>
+              </SignOutButton>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

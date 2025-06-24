@@ -5,15 +5,8 @@ export default function Layout({
 }: {
   children: React.ReactNode
 }) {
-  // Mock user data for now - replace with actual session data
-  const mockUser = {
-    name: 'Ved',
-    email: 'ved@example.com',
-    image: null
-  }
-
   return (
-    <DashboardLayout user={mockUser} userPlan="free">
+    <DashboardLayout userPlan="free">
       {children}
     </DashboardLayout>
   )
