@@ -32,7 +32,7 @@ export const collegeDomains: CollegeDomain[] = [
   { name: "Tufts University", domain: "tufts.edu" },
   { name: "Brandeis University", domain: "brandeis.edu" },
   { name: "Case Western Reserve University", domain: "case.edu" },
-  { name: "Lehigh University", domain: "lehigh.edu" },
+  { name: "Lehigh University", domain: "www2.lehigh.edu" },
   { name: "Villanova University", domain: "villanova.edu" },
   { name: "Rensselaer Polytechnic Institute", domain: "rpi.edu" },
   { name: "Worcester Polytechnic Institute", domain: "wpi.edu" },
