@@ -92,7 +92,8 @@ export function CollegeCard({ college, onUpdateStatus, onDelete, onEdit }: Colle
             <CollegeLogo 
               collegeName={college.name}
               domain={collegeDomain || undefined}
-              size={48}
+              size={64}
+              highQuality={true}
             />
             
             <div className="flex-1 min-w-0">

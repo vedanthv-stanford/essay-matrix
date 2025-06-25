@@ -45,7 +45,8 @@ const CollegeCard = ({ college, onUpdateStatus, onDelete, onEdit }: {
           <CollegeLogo 
             collegeName={college.name}
             domain={collegeDomain || undefined}
-            size={40}
+            size={56}
+            highQuality={true}
           />
           <div className="flex-1">
             <h3 className="font-semibold text-lg flex items-center gap-2">

@@ -6,8 +6,9 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const collegeName = searchParams.get('name');
   const domain = searchParams.get('domain');
-  const size = searchParams.get('size') || '200';
+  const size = searchParams.get('size') || '256'; // Increased default size for better quality
   const format = searchParams.get('format') || 'png';
+  const highQuality = searchParams.get('highQuality') === 'true';
 
   if (!collegeName) {
     return NextResponse.json({ error: 'College name is required' }, { status: 400 });
@@ -18,12 +19,22 @@ export async function GET(request: NextRequest) {
     const resolvedDomain = domain || findCollegeDomain(collegeName);
     
     // Get logo data using logo.dev API
-    const logoData = await logoApi.getCollegeLogo(
-      collegeName, 
-      resolvedDomain || undefined,
-      parseInt(size),
-      format
-    );
+    let logoData;
+    if (highQuality) {
+      logoData = await logoApi.getHighQualityLogo(
+        collegeName, 
+        resolvedDomain || undefined,
+        parseInt(size),
+        format
+      );
+    } else {
+      logoData = await logoApi.getCollegeLogo(
+        collegeName, 
+        resolvedDomain || undefined,
+        parseInt(size),
+        format
+      );
+    }
     
     if (!logoData) {
       return NextResponse.json({ error: 'Logo not found' }, { status: 404 });

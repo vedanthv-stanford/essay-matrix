@@ -9,15 +9,17 @@ interface CollegeLogoProps {
   className?: string;
   fallbackClassName?: string;
   showAttribution?: boolean;
+  highQuality?: boolean;
 }
 
 export function CollegeLogo({ 
   collegeName, 
   domain,
-  size = 48, 
+  size = 64,
   className = "",
   fallbackClassName = "",
-  showAttribution = false
+  showAttribution = false,
+  highQuality = true
 }: CollegeLogoProps) {
   const [logoUrl, setLogoUrl] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -35,7 +37,8 @@ export function CollegeLogo({
         const params = new URLSearchParams({ 
           name: collegeName,
           size: size.toString(),
-          format: 'png'
+          format: 'png',
+          highQuality: highQuality.toString() // Use the prop value
         });
         if (domain) params.append('domain', domain);
         
@@ -64,7 +67,7 @@ export function CollegeLogo({
     };
 
     fetchLogo();
-  }, [collegeName, domain, size]);
+  }, [collegeName, domain, size, highQuality]);
 
   // Cleanup blob URL on unmount
   useEffect(() => {
@@ -104,7 +107,11 @@ export function CollegeLogo({
           src={logoUrl}
           alt={`${collegeName} logo`}
           className={`rounded-lg object-contain ${className}`}
-          style={{ width: size, height: size }}
+          style={{ 
+            width: size, 
+            height: size,
+            imageRendering: '-webkit-optimize-contrast'
+          }}
           onError={() => setError(true)}
         />
         {showAttribution && (

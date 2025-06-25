@@ -23,8 +23,10 @@ LOGO_DEV_SECRET_KEY=your_api_key_here
 - **Automatic Domain Lookup**: The system automatically maps college names to their domains for faster logo loading
 - **Fallback System**: If a logo isn't found, the system displays college initials as a fallback
 - **Caching**: Logos are cached for 24 hours to improve performance
-- **Size Customization**: Logos can be requested in different sizes (default: 200px)
+- **Size Customization**: Logos can be requested in different sizes (default: 256px for better quality)
 - **Format Support**: Supports PNG format (can be extended to other formats)
+- **High-Quality Mode**: Automatically requests 2x the display size for high-DPI displays and better image quality
+- **Image Rendering Optimization**: Uses optimized CSS properties for sharper logo display
 
 ### 4. College Domain Mapping
 
@@ -57,7 +59,8 @@ import { CollegeLogo } from '@/components/ui/college-logo';
 <CollegeLogo 
   collegeName="Stanford University"
   domain="stanford.edu"
-  size={48}
+  size={64}
+  highQuality={true}
 />
 ```
 
@@ -70,6 +73,22 @@ Without an API key, you'll quickly hit rate limits. With a free logo.dev account
 - If you see letters instead of logos, you've hit the rate limit - add an API key
 - If a college logo isn't showing, check if the domain is in the mapping
 - The system will fallback to initials if no logo is found
+
+### 11. Image Quality Improvements
+
+The system has been optimized to provide sharper, higher-quality logos:
+
+- **Larger Default Sizes**: Increased default logo sizes from 128px to 256px for better quality
+- **High-Quality Mode**: Automatically requests 2x the display size for high-DPI displays
+- **Optimized Rendering**: Uses CSS `image-rendering: -webkit-optimize-contrast` for sharper display
+- **Better Format Support**: Uses PNG format for transparency and better quality
+- **API Key Benefits**: With a logo.dev API key, you get access to higher quality images and better rate limits
+
+To get the best logo quality:
+1. Ensure you have a valid `LOGO_DEV_SECRET_KEY` in your environment variables
+2. Use the `highQuality={true}` prop when rendering logos
+3. Request appropriate sizes (64px+ for best results)
+4. Use PNG format for logos with transparency
 
 ## College Domains Included
 

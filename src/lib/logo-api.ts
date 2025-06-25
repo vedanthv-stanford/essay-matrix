@@ -56,11 +56,11 @@ export class LogoApiService {
    * Get logo URL for a college by domain (preferred) or name (fallback)
    * @param collegeName - The name of the college
    * @param domain - The domain of the college (preferred)
-   * @param size - Size of the logo (default: 200)
-   * @param format - Format of the logo (default: png)
+   * @param size - Size of the logo (default: 256 for better quality)
+   * @param format - Format of the logo (default: png for transparency)
    * @returns Promise<LogoApiResponse | null>
    */
-  async getCollegeLogo(collegeName: string, domain?: string, size: number = 200, format: string = 'png'): Promise<LogoApiResponse | null> {
+  async getCollegeLogo(collegeName: string, domain?: string, size: number = 256, format: string = 'png'): Promise<LogoApiResponse | null> {
     try {
       if (domain) {
         // Use logo.dev's direct image URL with API key if available
@@ -115,16 +115,38 @@ export class LogoApiService {
    * Get logo with fallback to initials
    * @param collegeName - The name of the college
    * @param domain - The domain of the college (preferred)
-   * @param size - Size of the logo (default: 200)
-   * @param format - Format of the logo (default: png)
+   * @param size - Size of the logo (default: 256 for better quality)
+   * @param format - Format of the logo (default: png for transparency)
    * @returns Promise<LogoApiResponse | null>
    */
-  async getLogoWithFallback(collegeName: string, domain?: string, size: number = 200, format: string = 'png'): Promise<LogoApiResponse | null> {
+  async getLogoWithFallback(collegeName: string, domain?: string, size: number = 256, format: string = 'png'): Promise<LogoApiResponse | null> {
     try {
       return await this.getCollegeLogo(collegeName, domain, size, format);
     } catch (error) {
       console.warn(`Using fallback for ${collegeName}:`, error);
       return null; // Return null to use initials fallback
+    }
+  }
+
+  /**
+   * Get high-quality logo URL for a college
+   * This method requests a larger size for better quality, especially useful for high-DPI displays
+   * @param collegeName - The name of the college
+   * @param domain - The domain of the college (preferred)
+   * @param displaySize - The display size needed (will request 2x for high quality)
+   * @param format - Format of the logo (default: png for transparency)
+   * @returns Promise<LogoApiResponse | null>
+   */
+  async getHighQualityLogo(collegeName: string, domain?: string, displaySize: number = 128, format: string = 'png'): Promise<LogoApiResponse | null> {
+    // Request 2x the display size for high-DPI displays and better quality
+    const requestSize = Math.max(displaySize * 2, 256);
+    
+    try {
+      return await this.getCollegeLogo(collegeName, domain, requestSize, format);
+    } catch (error) {
+      console.warn(`Failed to get high-quality logo for ${collegeName}:`, error);
+      // Fallback to regular size
+      return await this.getCollegeLogo(collegeName, domain, displaySize, format);
     }
   }
 
