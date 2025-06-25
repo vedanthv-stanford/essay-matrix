@@ -18,9 +18,11 @@ interface College {
   name: string;
   status: string;
   location: string;
-  type: string;
+  type: string; // 'Public' or 'Private'
   acceptanceRate: number;
-  tuition: number;
+  tuitionInState?: number; // for public
+  tuitionOutOfState?: number; // for public
+  tuition?: number; // for private (and backward compatibility)
   enrollment: number;
   priority: number;
   createdAt: string;
@@ -37,6 +39,20 @@ const CollegeCard = ({ college, onUpdateStatus, onDelete, onEdit }: {
 }) => {
   // Get domain for the college
   const collegeDomain = findCollegeDomain(college.name);
+  const formatCurrency = (amount?: number) => {
+    if (!amount) return 'N/A';
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount);
+  };
+  const formatNumber = (num?: number) => {
+    if (!num) return 'N/A';
+    return new Intl.NumberFormat('en-US').format(num);
+  };
+  const isPublic = college.type && college.type.toLowerCase() === 'public';
   return (
     <Card className="p-4">
       <div className="flex items-center justify-between">
@@ -45,8 +61,7 @@ const CollegeCard = ({ college, onUpdateStatus, onDelete, onEdit }: {
           <CollegeLogo 
             collegeName={college.name}
             domain={collegeDomain || undefined}
-            size={56}
-            highQuality={true}
+            size={40}
           />
           <div className="flex-1">
             <h3 className="font-semibold text-lg flex items-center gap-2">
@@ -61,6 +76,39 @@ const CollegeCard = ({ college, onUpdateStatus, onDelete, onEdit }: {
             <Badge variant="secondary" className="text-xs">
               {college.status}
             </Badge>
+            <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-3 mt-2 mb-1 grid grid-cols-2 gap-x-6 gap-y-2 border border-gray-200 dark:border-gray-700">
+              {college.type && (
+                <div>
+                  <span className="font-bold text-gray-700 dark:text-gray-200">Type:</span> <span className="font-semibold text-gray-900 dark:text-white">{college.type}</span>
+                </div>
+              )}
+              {college.acceptanceRate && (
+                <div>
+                  <span className="font-bold text-gray-700 dark:text-gray-200">Acceptance:</span> <span className="font-semibold text-gray-900 dark:text-white">{college.acceptanceRate}%</span>
+                </div>
+              )}
+              {isPublic ? (
+                <>
+                  <div>
+                    <span className="font-bold text-blue-700 dark:text-blue-300">In-State Tuition:</span> <span className="font-semibold text-gray-900 dark:text-white">{formatCurrency(college.tuitionInState)}</span>
+                  </div>
+                  <div>
+                    <span className="font-bold text-purple-700 dark:text-purple-300">Out-of-State Tuition:</span> <span className="font-semibold text-gray-900 dark:text-white">{formatCurrency(college.tuitionOutOfState)}</span>
+                  </div>
+                </>
+              ) : (
+                college.tuition && (
+                  <div>
+                    <span className="font-bold text-gray-700 dark:text-gray-200">Tuition:</span> <span className="font-semibold text-gray-900 dark:text-white">{formatCurrency(college.tuition)}</span>
+                  </div>
+                )
+              )}
+              {college.enrollment && (
+                <div>
+                  <span className="font-bold text-gray-700 dark:text-gray-200">Enrollment:</span> <span className="font-semibold text-gray-900 dark:text-white">{formatNumber(college.enrollment)}</span>
+                </div>
+              )}
+            </div>
           </div>
         </div>
         <div className="flex items-center space-x-2">
