@@ -38,7 +38,8 @@ export function CollegeLogo({
           name: collegeName,
           size: size.toString(),
           format: 'png',
-          highQuality: highQuality.toString() // Use the prop value
+          highQuality: highQuality.toString(), // Use the prop value
+          _t: Date.now().toString() // Cache busting parameter
         });
         if (domain) params.append('domain', domain);
         

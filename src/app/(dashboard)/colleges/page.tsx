@@ -27,6 +27,7 @@ interface College {
   priority: number;
   createdAt: string;
   updatedAt: string;
+  domain?: string;
 }
 
 const statusOptions = ['All', 'In Progress', 'Applied', 'Accepted', 'Rejected', 'Waitlisted'];
@@ -179,12 +180,30 @@ export default function CollegesPage() {
 
   const handleAddCollege = async (collegeData: any) => {
     try {
+      // Transform the college data to match the Prisma schema
+      const transformedData = {
+        name: collegeData.name,
+        location: collegeData.location,
+        type: collegeData.type,
+        acceptanceRate: collegeData.acceptanceRate,
+        enrollment: collegeData.enrollment,
+        // Handle tuition fields based on school type
+        ...(collegeData.type === 'Public' ? {
+          tuitionInState: collegeData.tuitionInState || collegeData.tuition,
+          tuitionOutOfState: collegeData.tuitionOutOfState || collegeData.tuition,
+        } : {
+          tuition: collegeData.tuition,
+        }),
+        // Add domain if available
+        ...(collegeData.domain && { domain: collegeData.domain }),
+      };
+
       const response = await fetch('/api/colleges', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(collegeData),
+        body: JSON.stringify(transformedData),
       });
 
       if (response.ok) {
@@ -192,7 +211,8 @@ export default function CollegesPage() {
         setColleges(prev => [...prev, newCollege]);
         setShowSearch(false);
       } else {
-        console.error('Failed to add college');
+        const errorData = await response.json();
+        console.error('Failed to add college:', errorData.error || 'Unknown error');
       }
     } catch (error) {
       console.error('Error adding college:', error);

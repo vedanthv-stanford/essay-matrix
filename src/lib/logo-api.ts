@@ -53,6 +53,28 @@ export class LogoApiService {
   }
 
   /**
+   * Get fallback logo URL for universities that don't work with logo.dev API
+   * @param collegeName - The name of the college
+   * @returns string | null
+   */
+  private getFallbackLogoUrl(collegeName: string): string | null {
+    const fallbackLogos: { [key: string]: string } = {
+      'University of Houston': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/University_of_Houston_Logo.svg/1216px-University_of_Houston_Logo.svg.png',
+      'University of Miami': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Miami_Hurricanes_logo.svg/1200px-Miami_Hurricanes_logo.svg.png',
+      'Cornell University': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Cornell_University_seal.svg/2048px-Cornell_University_seal.svg.png',
+    };
+
+    console.log(`Checking fallback for: "${collegeName}"`);
+    const fallbackUrl = fallbackLogos[collegeName];
+    if (fallbackUrl) {
+      console.log(`Found fallback URL for ${collegeName}: ${fallbackUrl}`);
+    } else {
+      console.log(`No fallback URL found for ${collegeName}`);
+    }
+    return fallbackUrl || null;
+  }
+
+  /**
    * Get logo URL for a college by domain (preferred) or name (fallback)
    * @param collegeName - The name of the college
    * @param domain - The domain of the college (preferred)
@@ -62,6 +84,16 @@ export class LogoApiService {
    */
   async getCollegeLogo(collegeName: string, domain?: string, size: number = 256, format: string = 'png'): Promise<LogoApiResponse | null> {
     try {
+      // Check for known fallback URLs first
+      const fallbackUrl = this.getFallbackLogoUrl(collegeName);
+      if (fallbackUrl) {
+        return {
+          url: fallbackUrl,
+          width: size,
+          height: size
+        };
+      }
+
       if (domain) {
         // Use logo.dev's direct image URL with API key if available
         const params = new URLSearchParams({

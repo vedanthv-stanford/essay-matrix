@@ -13,8 +13,11 @@ interface College {
   location: string;
   type: string;
   acceptanceRate: number;
-  tuition: number;
+  tuition?: number; // For private schools
+  tuitionInState?: number; // For public schools
+  tuitionOutOfState?: number; // For public schools
   enrollment: number;
+  domain?: string;
 }
 
 interface CollegeSearchProps {
@@ -68,7 +71,20 @@ export function CollegeSearch({ onAddCollege, existingColleges }: CollegeSearchP
   }, [query]);
 
   const handleAddCollege = (college: College) => {
-    onAddCollege(college);
+    // Transform the college data to include all necessary fields
+    const collegeData = {
+      name: college.name,
+      location: college.location,
+      type: college.type,
+      acceptanceRate: college.acceptanceRate,
+      enrollment: college.enrollment,
+      tuition: college.tuition,
+      tuitionInState: college.tuitionInState,
+      tuitionOutOfState: college.tuitionOutOfState,
+      domain: college.domain,
+    };
+    
+    onAddCollege(collegeData);
     setQuery('');
     setShowResults(false);
   };
@@ -150,8 +166,19 @@ export function CollegeSearch({ onAddCollege, existingColleges }: CollegeSearchP
                             {college.acceptanceRate && (
                               <span>{college.acceptanceRate}% acceptance</span>
                             )}
-                            {college.tuition && (
-                              <span>{formatCurrency(college.tuition)}/year</span>
+                            {college.type === 'Public' ? (
+                              <>
+                                {college.tuitionInState && (
+                                  <span>In-state: {formatCurrency(college.tuitionInState)}/year</span>
+                                )}
+                                {college.tuitionOutOfState && (
+                                  <span>Out-of-state: {formatCurrency(college.tuitionOutOfState)}/year</span>
+                                )}
+                              </>
+                            ) : (
+                              college.tuition && (
+                                <span>{formatCurrency(college.tuition)}/year</span>
+                              )
                             )}
                             {college.enrollment && (
                               <span>{formatNumber(college.enrollment)} students</span>

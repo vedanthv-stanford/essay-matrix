@@ -1,6 +1,8 @@
 // College Data Management System
 // This file handles fetching and managing college data from various sources
 
+import { getAllColleges } from './college-database';
+
 export interface CollegeData {
   id: string;
   name: string;
@@ -401,28 +403,8 @@ export class CollegeDataManager {
 
   // Get popular colleges (top schools)
   getPopularColleges(): string[] {
-    return [
-      'Harvard University',
-      'Stanford University',
-      'Yale University',
-      'Princeton University',
-      'Columbia University',
-      'University of Pennsylvania',
-      'Brown University',
-      'Dartmouth College',
-      'Cornell University',
-      'Massachusetts Institute of Technology',
-      'University of California, Berkeley',
-      'University of California, Los Angeles',
-      'University of Michigan',
-      'University of Virginia',
-      'University of North Carolina at Chapel Hill',
-      'University of Texas at Austin',
-      'University of Wisconsin-Madison',
-      'University of Illinois at Urbana-Champaign',
-      'University of California, San Diego',
-      'University of California, Davis'
-    ];
+    // Get the first 20 colleges from the unified database as popular colleges
+    return getAllColleges().slice(0, 20).map(college => college.name);
   }
 }
 

@@ -76,7 +76,9 @@ model College {
   location      String?  // City, State
   type          String?  // Public, Private, Liberal Arts, etc.
   acceptanceRate Float?  // Acceptance rate as percentage
-  tuition       Int?     // Annual tuition in USD
+  tuition       Int?     // Annual tuition in USD (for private schools)
+  tuitionInState Int?    // In-state tuition for public schools
+  tuitionOutOfState Int? // Out-of-state tuition for public schools
   enrollment    Int?     // Total enrollment
   website       String?  // College website URL
   notes         String?  // User notes about the college
