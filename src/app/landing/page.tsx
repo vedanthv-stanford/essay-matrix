@@ -5,7 +5,7 @@ import Landing from "@/components/landing";
 export default async function LandingPage() {
     const session = await getServerSession();
     if (session) {
-        redirect("/dashboard");
+        redirect("/colleges");
     }
     return <Landing />;
 }
