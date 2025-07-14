@@ -32,11 +32,11 @@ const CollegeCard = ({ college, status, ranking, onUpdateStatus, onDelete, onEdi
             </div>
             <div className="flex flex-wrap gap-x-6 gap-y-2 mt-1 text-sm items-center">
               <span className="flex items-center gap-1"><LucideMapPin className="w-4 h-4 text-pink-500" />{college.location}</span>
-              <span className="flex items-center gap-1"><LucideKey className="w-4 h-4 text-yellow-500" />App Fee: {college.appFee}</span>
+              <span className="flex items-center gap-1"><LucideKey className="w-4 h-4 text-yellow-500" />App Fee: {college.appFeeDomestic}</span>
               <span className="flex items-center gap-1"><LucideClipboardList className="w-4 h-4 text-blue-400" />{college.decisionTypes}</span>
               <span className="flex items-center gap-1"><LucidePercentCircle className="w-4 h-4 text-green-500" />{college.freshmanAcceptanceRate}</span>
               <span className="flex items-center gap-1"><LucideCheckCircle2 className="w-4 h-4 text-emerald-500" />{college.testPolicy}</span>
-              <span className="flex items-center gap-1"><LucideUsers className="w-4 h-4 text-indigo-500" />{college.undergradPopulation}</span>
+              <span className="flex items-center gap-1"><LucideUsers className="w-4 h-4 text-indigo-500" />{college.undergradPopulation2022}</span>
               <span className="flex items-center gap-1"><LucideBadgeDollarSign className="w-4 h-4 text-orange-500" />In-State: {college.inStateCOA}</span>
               <span className="flex items-center gap-1"><LucideBadgePercent className="w-4 h-4 text-fuchsia-500" />OOS: {college.outOfStateCOA}</span>
             </div>
@@ -85,7 +85,7 @@ export default function CollegesPage() {
     if (searchQuery) {
       currentColleges = currentColleges.filter(college =>
         college.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        college.location.toLowerCase().includes(searchQuery.toLowerCase())
+        (college.location && college.location.toLowerCase().includes(searchQuery.toLowerCase()))
       );
     }
     setFilteredColleges(currentColleges);
