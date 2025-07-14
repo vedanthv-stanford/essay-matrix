@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sun, Moon } from "lucide-react";
-import { SignInButton, SignUpButton, useUser } from "@clerk/nextjs";
+import { SignInButton, useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 
 function DarkModeToggle() {
@@ -60,9 +60,9 @@ export default function Landing() {
         <span className="block mx-auto">Get started by signing up or logging in.</span>
       </p>
       <div className="flex gap-4">
-        <SignUpButton mode="modal">
+        <Link href="/sign-up">
           <Button>Sign Up</Button>
-        </SignUpButton>
+        </Link>
         <SignInButton mode="modal">
           <Button className="dark:bg-white dark:text-black">Log In</Button>
         </SignInButton>
