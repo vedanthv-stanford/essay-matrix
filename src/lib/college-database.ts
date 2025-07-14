@@ -1,4 +1,6 @@
-import collegeMetadata from './college-metadata.json';
+import collegeMetadataRaw from './college_metadata.json';
+
+const collegeMetadata = collegeMetadataRaw.colleges;
 
 export interface CollegeInfo {
   name: string;
@@ -25,15 +27,15 @@ export const collegeDatabase: CollegeInfo[] = (collegeMetadata as any[]).map((c)
   name: c.name,
   // usNewsRank and location are not present in the new JSON, so we leave them undefined
   applicationSystems: Array.isArray(c.applicationSystems) ? c.applicationSystems.join(', ') : (c.applicationSystems || ''),
-  appFeeDomestic: c.appFeeDomestic !== undefined && c.appFeeDomestic !== null ? `$${c.appFeeDomestic}` : '',
+  appFeeDomestic: c.appFeeDomestic || '',
   decisionTypes: Array.isArray(c.decisionTypes) ? c.decisionTypes.join(', ') : (c.decisionTypes || ''),
-  freshmanAcceptanceRate: c.acceptanceRate !== undefined && c.acceptanceRate !== null ? `${(c.acceptanceRate * 100).toFixed(2)}%` : '',
-  transferAcceptanceRate: c.transferAcceptanceRate !== undefined && c.transferAcceptanceRate !== null ? `${(c.transferAcceptanceRate * 100).toFixed(2)}%` : '',
+  freshmanAcceptanceRate: c.acceptanceRate || '',
+  transferAcceptanceRate: c.transferAcceptanceRate || '',
   testPolicy: c.testPolicy || '',
   academicCalendar: c.academicCalendar || '',
-  undergradPopulation2022: c.undergradPopulation !== undefined && c.undergradPopulation !== null ? c.undergradPopulation.toString() : '',
-  inStateCOA: c.inStateTuition !== undefined && c.inStateTuition !== null ? `$${c.inStateTuition}` : '',
-  outOfStateCOA: c.outOfStateTuition !== undefined && c.outOfStateTuition !== null ? `$${c.outOfStateTuition}` : '',
+  undergradPopulation2022: c.overallPopulation !== undefined && c.overallPopulation !== null ? c.overallPopulation.toString() : '',
+  inStateCOA: c.inStateTuition || '',
+  outOfStateCOA: c.outOfStateTuition || '',
   domain: c.domain,
   admissionsUrl: c.admissionsUrl,
   essayUrl: c.essayUrl,
