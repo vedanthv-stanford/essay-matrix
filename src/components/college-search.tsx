@@ -41,7 +41,7 @@ export function CollegeSearch({ onAddCollege, existingColleges }: CollegeSearchP
     // Use the new collegeDatabase for suggestions
     const filtered = collegeDatabase.filter(college =>
       college.name.toLowerCase().includes(query.toLowerCase()) ||
-      college.location.toLowerCase().includes(query.toLowerCase())
+      (college.location && college.location.toLowerCase().includes(query.toLowerCase()))
     ).slice(0, 8);
     setResults(filtered);
     setShowResults(true);
@@ -113,9 +113,9 @@ export function CollegeSearch({ onAddCollege, existingColleges }: CollegeSearchP
                           </div>
                           <p className="text-xs text-muted-foreground mb-1">{college.location}</p>
                           <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                            <span>App Fee: {college.appFee}</span>
+                            <span>App Fee: {college.appFeeDomestic}</span>
                             <span>Acceptance: {college.freshmanAcceptanceRate}</span>
-                            <span>Pop: {college.undergradPopulation}</span>
+                            <span>Pop: {college.undergradPopulation2022}</span>
                           </div>
                         </div>
                         {!isAlreadyAdded && (
