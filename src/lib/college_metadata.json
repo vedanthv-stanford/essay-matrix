@@ -1,0 +1,2564 @@
+{
+  "colleges": [
+    {
+      "name": "American University",
+      "domain": "american.edu",
+      "acceptanceRate": "44.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 8000,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.american.edu/",
+      "essayUrl": "https://admissions.american.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Amherst College",
+      "domain": "amherst.edu",
+      "acceptanceRate": "9.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 1800,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.amherst.edu/",
+      "essayUrl": "https://admissions.amherst.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Babson College",
+      "domain": "babson.edu",
+      "acceptanceRate": "22.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision",
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 2400,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.babson.edu/",
+      "essayUrl": "https://admissions.babson.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Barnard College",
+      "domain": "barnard.edu",
+      "acceptanceRate": "6.5%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 2600,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.barnard.edu/",
+      "essayUrl": "https://admissions.barnard.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Boston College",
+      "domain": "bc.edu",
+      "acceptanceRate": "15.0%",
+      "transferAcceptanceRate": "16.6%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$70",
+      "appFeeInternational": "$70",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 9500,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.bc.edu/",
+      "essayUrl": "https://admissions.bc.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Boston University",
+      "domain": "bu.edu",
+      "acceptanceRate": "10.8%",
+      "transferAcceptanceRate": "52.0%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 18000,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.bu.edu/",
+      "essayUrl": "https://admissions.bu.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Bowdoin College",
+      "domain": "bowdoin.edu",
+      "acceptanceRate": "8.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 1800,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.bowdoin.edu/",
+      "essayUrl": "https://admissions.bowdoin.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Brandeis University",
+      "domain": "brandeis.edu",
+      "acceptanceRate": "35.3%",
+      "transferAcceptanceRate": "31.4%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 3600,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.brandeis.edu/",
+      "essayUrl": "https://admissions.brandeis.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Brown University",
+      "domain": "brown.edu",
+      "acceptanceRate": "5.2%",
+      "transferAcceptanceRate": "5.1%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 7000,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.brown.edu/",
+      "essayUrl": "https://admissions.brown.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Bucknell University",
+      "domain": "bucknell.edu",
+      "acceptanceRate": "32.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 3600,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.bucknell.edu/",
+      "essayUrl": "https://admissions.bucknell.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of California Berkeley",
+      "domain": "berkeley.edu",
+      "acceptanceRate": "11.7%",
+      "transferAcceptanceRate": "23.2%",
+      "applicationSystems": [
+        "UC Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Blind",
+      "academicCalendar": "Semester",
+      "overallPopulation": 31000,
+      "inStateTuition": "$14,000",
+      "outOfStateTuition": "$45,000",
+      "admissionsUrl": "https://admissions.berkeley.edu/",
+      "essayUrl": "https://admissions.berkeley.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of California Los Angeles",
+      "domain": "ucla.edu",
+      "acceptanceRate": "8.7%",
+      "transferAcceptanceRate": "25.9%",
+      "applicationSystems": [
+        "UC Application"
+      ],
+      "appFeeDomestic": "$70",
+      "appFeeInternational": "$70",
+      "decisionTypes": [
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Blind",
+      "academicCalendar": "Quarter",
+      "overallPopulation": 32000,
+      "inStateTuition": "$14,000",
+      "outOfStateTuition": "$45,000",
+      "admissionsUrl": "https://admissions.ucla.edu/",
+      "essayUrl": "https://admissions.ucla.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "California Institute of Technology",
+      "domain": "caltech.edu",
+      "acceptanceRate": "3.2%",
+      "transferAcceptanceRate": "1.9%",
+      "applicationSystems": [
+        "Institution-specific Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Quarter",
+      "overallPopulation": 1000,
+      "inStateTuition": "$14,000",
+      "outOfStateTuition": "$45,000",
+      "admissionsUrl": "https://admissions.caltech.edu/",
+      "essayUrl": "https://admissions.caltech.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Carnegie Mellon University",
+      "domain": "cmu.edu",
+      "acceptanceRate": "11.4%",
+      "transferAcceptanceRate": "6.9%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$70",
+      "appFeeInternational": "$70",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 7000,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.cmu.edu/",
+      "essayUrl": "https://admissions.cmu.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Chapman University",
+      "domain": "chapman.edu",
+      "acceptanceRate": "56.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 9000,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.chapman.edu/",
+      "essayUrl": "https://admissions.chapman.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of Chicago",
+      "domain": "uchicago.edu",
+      "acceptanceRate": "4.8%",
+      "transferAcceptanceRate": "5.4%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Quarter",
+      "overallPopulation": 6500,
+      "inStateTuition": "$12,000",
+      "outOfStateTuition": "$30,000",
+      "admissionsUrl": "https://admissions.uchicago.edu/",
+      "essayUrl": "https://admissions.uchicago.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Claremont McKenna College",
+      "domain": "cmc.edu",
+      "acceptanceRate": "9.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 1300,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.cmc.edu/",
+      "essayUrl": "https://admissions.cmc.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Colgate University",
+      "domain": "colgate.edu",
+      "acceptanceRate": "12.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 3000,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.colgate.edu/",
+      "essayUrl": "https://admissions.colgate.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of Colorado Boulder",
+      "domain": "colorado.edu",
+      "acceptanceRate": "85.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Institution-specific Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 33000,
+      "inStateTuition": "$13,000",
+      "outOfStateTuition": "$39,000",
+      "admissionsUrl": "https://admissions.colorado.edu/",
+      "essayUrl": "https://admissions.colorado.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Columbia University",
+      "domain": "columbia.edu",
+      "acceptanceRate": "3.7%",
+      "transferAcceptanceRate": "6.7%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$85",
+      "appFeeInternational": "$85",
+      "decisionTypes": [
+        "Early Decision",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 8500,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.columbia.edu/",
+      "essayUrl": "https://admissions.columbia.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Cornell University",
+      "domain": "cornell.edu",
+      "acceptanceRate": "7.9%",
+      "transferAcceptanceRate": "17.9%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$80",
+      "appFeeInternational": "$80",
+      "decisionTypes": [
+        "Early Decision",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 15000,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.cornell.edu/",
+      "essayUrl": "https://admissions.cornell.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Dartmouth College",
+      "domain": "dartmouth.edu",
+      "acceptanceRate": "6.2%",
+      "transferAcceptanceRate": "0.5%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$85",
+      "appFeeInternational": "$85",
+      "decisionTypes": [
+        "Early Decision",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Quarter",
+      "overallPopulation": 4500,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.dartmouth.edu/",
+      "essayUrl": "https://admissions.dartmouth.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Duke University",
+      "domain": "duke.edu",
+      "acceptanceRate": "7.4%",
+      "transferAcceptanceRate": "6.7%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$85",
+      "appFeeInternational": "$85",
+      "decisionTypes": [
+        "Early Decision",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 6500,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.duke.edu/",
+      "essayUrl": "https://admissions.duke.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Emory University",
+      "domain": "emory.edu",
+      "acceptanceRate": "10.7%",
+      "transferAcceptanceRate": "25.6%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 7000,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.emory.edu/",
+      "essayUrl": "https://admissions.emory.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Florida A&M University",
+      "domain": "famu.edu",
+      "acceptanceRate": "30.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Institution-specific Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 7700,
+      "inStateTuition": "$6,000",
+      "outOfStateTuition": "$22,000",
+      "admissionsUrl": "https://admissions.famu.edu/",
+      "essayUrl": "https://admissions.famu.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Fordham University",
+      "domain": "fordham.edu",
+      "acceptanceRate": "54.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 9000,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.fordham.edu/",
+      "essayUrl": "https://admissions.fordham.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "George Washington University",
+      "domain": "gwu.edu",
+      "acceptanceRate": "49.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 12000,
+      "inStateTuition": "$12,000",
+      "outOfStateTuition": "$40,000",
+      "admissionsUrl": "https://admissions.gwu.edu/",
+      "essayUrl": "https://admissions.gwu.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of Georgia",
+      "domain": "uga.edu",
+      "acceptanceRate": "45.0%",
+      "transferAcceptanceRate": "72.8%",
+      "applicationSystems": [
+        "Institution-specific Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Required",
+      "academicCalendar": "Semester",
+      "overallPopulation": 30000,
+      "inStateTuition": "$12,000",
+      "outOfStateTuition": "$33,000",
+      "admissionsUrl": "https://admissions.uga.edu/",
+      "essayUrl": "https://admissions.uga.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Georgetown University",
+      "domain": "georgetown.edu",
+      "acceptanceRate": "13.1%",
+      "transferAcceptanceRate": "15.9%",
+      "applicationSystems": [
+        "Common Application",
+        "Georgetown Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 7500,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.georgetown.edu/",
+      "essayUrl": "https://admissions.georgetown.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Georgia Institute of Technology",
+      "domain": "gatech.edu",
+      "acceptanceRate": "16.5%",
+      "transferAcceptanceRate": "37.8%",
+      "applicationSystems": [
+        "Institution-specific Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 16000,
+      "inStateTuition": "$12,000",
+      "outOfStateTuition": "$33,000",
+      "admissionsUrl": "https://admissions.gatech.edu/",
+      "essayUrl": "https://admissions.gatech.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Harvard University",
+      "domain": "harvard.edu",
+      "acceptanceRate": "3.5%",
+      "transferAcceptanceRate": "0.8%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$85",
+      "appFeeInternational": "$85",
+      "decisionTypes": [
+        "Restrictive Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 7000,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.harvard.edu/",
+      "essayUrl": "https://admissions.harvard.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Harvey Mudd College",
+      "domain": "hmc.edu",
+      "acceptanceRate": "18.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 900,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.hmc.edu/",
+      "essayUrl": "https://admissions.hmc.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Haverford College",
+      "domain": "haverford.edu",
+      "acceptanceRate": "18.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 1300,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.haverford.edu/",
+      "essayUrl": "https://admissions.haverford.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Howard University",
+      "domain": "howard.edu",
+      "acceptanceRate": "36.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 6500,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.howard.edu/",
+      "essayUrl": "https://admissions.howard.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of Illinois Urbana-Champaign",
+      "domain": "illinois.edu",
+      "acceptanceRate": "45.8%",
+      "transferAcceptanceRate": "45.8%",
+      "applicationSystems": [
+        "Institution-specific Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 35000,
+      "inStateTuition": "$16,000",
+      "outOfStateTuition": "$35,000",
+      "admissionsUrl": "https://admissions.illinois.edu/",
+      "essayUrl": "https://admissions.illinois.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Johns Hopkins University",
+      "domain": "jhu.edu",
+      "acceptanceRate": "7.6%",
+      "transferAcceptanceRate": "10.2%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$70",
+      "appFeeInternational": "$70",
+      "decisionTypes": [
+        "Early Decision",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 6000,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.jhu.edu/",
+      "essayUrl": "https://admissions.jhu.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Loyola Marymount University",
+      "domain": "lmu.edu",
+      "acceptanceRate": "47.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 6500,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.lmu.edu/",
+      "essayUrl": "https://admissions.lmu.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Lehigh University",
+      "domain": "lehigh.edu",
+      "acceptanceRate": "37.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$70",
+      "appFeeInternational": "$70",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 5200,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.lehigh.edu/",
+      "essayUrl": "https://admissions.lehigh.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of Massachusetts Amherst",
+      "domain": "umass.edu",
+      "acceptanceRate": "66.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Institution-specific Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 23000,
+      "inStateTuition": "$16,000",
+      "outOfStateTuition": "$35,000",
+      "admissionsUrl": "https://admissions.umass.edu/",
+      "essayUrl": "https://admissions.umass.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of Maryland",
+      "domain": "umd.edu",
+      "acceptanceRate": "47.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Institution-specific Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 30000,
+      "inStateTuition": "$11,000",
+      "outOfStateTuition": "$38,000",
+      "admissionsUrl": "https://admissions.umd.edu/",
+      "essayUrl": "https://admissions.umd.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of Michigan\u2013Ann Arbor",
+      "domain": "umich.edu",
+      "acceptanceRate": "17.7%",
+      "transferAcceptanceRate": "37.9%",
+      "applicationSystems": [
+        "Institution-specific Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 32000,
+      "inStateTuition": "$16,000",
+      "outOfStateTuition": "$53,000",
+      "admissionsUrl": "https://admissions.umich.edu/",
+      "essayUrl": "https://admissions.umich.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of Miami",
+      "domain": "miami.edu",
+      "acceptanceRate": "33.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 10400,
+      "inStateTuition": "$12,000",
+      "outOfStateTuition": "$30,000",
+      "admissionsUrl": "https://admissions.miami.edu/",
+      "essayUrl": "https://admissions.miami.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Massachusetts Institute of Technology",
+      "domain": "mit.edu",
+      "acceptanceRate": "3.9%",
+      "transferAcceptanceRate": "4.1%",
+      "applicationSystems": [
+        "MIT Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 4500,
+      "inStateTuition": "$16,000",
+      "outOfStateTuition": "$35,000",
+      "admissionsUrl": "https://admissions.mit.edu/",
+      "essayUrl": "https://admissions.mit.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of North Carolina at Chapel Hill",
+      "domain": "unc.edu",
+      "acceptanceRate": "18.7%",
+      "transferAcceptanceRate": "34.5%",
+      "applicationSystems": [
+        "Institution-specific Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 19000,
+      "inStateTuition": "$9,000",
+      "outOfStateTuition": "$37,000",
+      "admissionsUrl": "https://admissions.unc.edu/",
+      "essayUrl": "https://admissions.unc.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Northwestern University",
+      "domain": "northwestern.edu",
+      "acceptanceRate": "7.2%",
+      "transferAcceptanceRate": "15.1%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Quarter",
+      "overallPopulation": 8500,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.northwestern.edu/",
+      "essayUrl": "https://admissions.northwestern.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of Notre Dame",
+      "domain": "nd.edu",
+      "acceptanceRate": "12.4%",
+      "transferAcceptanceRate": "26.6%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Restrictive Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 8500,
+      "inStateTuition": "$12,000",
+      "outOfStateTuition": "$30,000",
+      "admissionsUrl": "https://admissions.nd.edu/",
+      "essayUrl": "https://admissions.nd.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "New York University",
+      "domain": "nyu.edu",
+      "acceptanceRate": "9.4%",
+      "transferAcceptanceRate": "25.8%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$80",
+      "appFeeInternational": "$80",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 27000,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.nyu.edu/",
+      "essayUrl": "https://admissions.nyu.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of Pennsylvania",
+      "domain": "upenn.edu",
+      "acceptanceRate": "5.9%",
+      "transferAcceptanceRate": "8.1%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 10000,
+      "inStateTuition": "$12,000",
+      "outOfStateTuition": "$30,000",
+      "admissionsUrl": "https://admissions.upenn.edu/",
+      "essayUrl": "https://admissions.upenn.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Pennsylvania State University",
+      "domain": "psu.edu",
+      "acceptanceRate": "69.8%",
+      "transferAcceptanceRate": "69.8%",
+      "applicationSystems": [
+        "Institution-specific Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 41000,
+      "inStateTuition": "$19,000",
+      "outOfStateTuition": "$36,000",
+      "admissionsUrl": "https://admissions.psu.edu/",
+      "essayUrl": "https://admissions.psu.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Pepperdine University",
+      "domain": "pepperdine.edu",
+      "acceptanceRate": "37.0%",
+      "transferAcceptanceRate": "29.8%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 3500,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.pepperdine.edu/",
+      "essayUrl": "https://admissions.pepperdine.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Pomona College",
+      "domain": "pomona.edu",
+      "acceptanceRate": "7.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 1700,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.pomona.edu/",
+      "essayUrl": "https://admissions.pomona.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Princeton University",
+      "domain": "princeton.edu",
+      "acceptanceRate": "5.7%",
+      "transferAcceptanceRate": "1.0%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Restrictive Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 5000,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.princeton.edu/",
+      "essayUrl": "https://admissions.princeton.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Purdue University",
+      "domain": "purdue.edu",
+      "acceptanceRate": "53.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Institution-specific Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Required",
+      "academicCalendar": "Semester",
+      "overallPopulation": 34000,
+      "inStateTuition": "$10,000",
+      "outOfStateTuition": "$29,000",
+      "admissionsUrl": "https://admissions.purdue.edu/",
+      "essayUrl": "https://admissions.purdue.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Reed College",
+      "domain": "reed.edu",
+      "acceptanceRate": "31.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 1400,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.reed.edu/",
+      "essayUrl": "https://admissions.reed.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Rensselaer Polytechnic Institute",
+      "domain": "rpi.edu",
+      "acceptanceRate": "49.4%",
+      "transferAcceptanceRate": "49.4%",
+      "applicationSystems": [
+        "Institution-specific Application"
+      ],
+      "appFeeDomestic": "$70",
+      "appFeeInternational": "$70",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 6000,
+      "inStateTuition": "$12,000",
+      "outOfStateTuition": "$30,000",
+      "admissionsUrl": "https://admissions.rpi.edu/",
+      "essayUrl": "https://admissions.rpi.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Rice University",
+      "domain": "rice.edu",
+      "acceptanceRate": "8.7%",
+      "transferAcceptanceRate": "9.7%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 4200,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.rice.edu/",
+      "essayUrl": "https://admissions.rice.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of Richmond",
+      "domain": "richmond.edu",
+      "acceptanceRate": "30.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 3200,
+      "inStateTuition": "$12,000",
+      "outOfStateTuition": "$30,000",
+      "admissionsUrl": "https://admissions.richmond.edu/",
+      "essayUrl": "https://admissions.richmond.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of Rochester",
+      "domain": "rochester.edu",
+      "acceptanceRate": "35.9%",
+      "transferAcceptanceRate": "29.2%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 6500,
+      "inStateTuition": "$12,000",
+      "outOfStateTuition": "$30,000",
+      "admissionsUrl": "https://admissions.rochester.edu/",
+      "essayUrl": "https://admissions.rochester.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of San Diego",
+      "domain": "sandiego.edu",
+      "acceptanceRate": "53.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 5700,
+      "inStateTuition": "$12,000",
+      "outOfStateTuition": "$30,000",
+      "admissionsUrl": "https://admissions.sandiego.edu/",
+      "essayUrl": "https://admissions.sandiego.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Santa Clara University",
+      "domain": "scu.edu",
+      "acceptanceRate": "49.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Quarter",
+      "overallPopulation": 5500,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.scu.edu/",
+      "essayUrl": "https://admissions.scu.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of Southern California",
+      "domain": "usc.edu",
+      "acceptanceRate": "12.0%",
+      "transferAcceptanceRate": "24.3%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$85",
+      "appFeeInternational": "$85",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 20000,
+      "inStateTuition": "$14,000",
+      "outOfStateTuition": "$45,000",
+      "admissionsUrl": "https://admissions.usc.edu/",
+      "essayUrl": "https://admissions.usc.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Spelman College",
+      "domain": "spelman.edu",
+      "acceptanceRate": "39.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 2100,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.spelman.edu/",
+      "essayUrl": "https://admissions.spelman.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Stanford University",
+      "domain": "stanford.edu",
+      "acceptanceRate": "3.9%",
+      "transferAcceptanceRate": "1.4%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$90",
+      "appFeeInternational": "$90",
+      "decisionTypes": [
+        "Restrictive Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Quarter",
+      "overallPopulation": 7000,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.stanford.edu/",
+      "essayUrl": "https://admissions.stanford.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Stony Brook University",
+      "domain": "stonybrook.edu",
+      "acceptanceRate": "49.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Institution-specific Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 17000,
+      "inStateTuition": "$10,000",
+      "outOfStateTuition": "$28,000",
+      "admissionsUrl": "https://admissions.stonybrook.edu/",
+      "essayUrl": "https://admissions.stonybrook.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Swarthmore College",
+      "domain": "swarthmore.edu",
+      "acceptanceRate": "7.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 1600,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.swarthmore.edu/",
+      "essayUrl": "https://admissions.swarthmore.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Syracuse University",
+      "domain": "syracuse.edu",
+      "acceptanceRate": "70.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$70",
+      "appFeeInternational": "$70",
+      "decisionTypes": [
+        "Early Decision",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 15000,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.syracuse.edu/",
+      "essayUrl": "https://admissions.syracuse.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Texas A&M University",
+      "domain": "tamu.edu",
+      "acceptanceRate": "67.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "ApplyTexas"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 53000,
+      "inStateTuition": "$11,000",
+      "outOfStateTuition": "$40,000",
+      "admissionsUrl": "https://admissions.tamu.edu/",
+      "essayUrl": "https://admissions.tamu.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Tufts University",
+      "domain": "tufts.edu",
+      "acceptanceRate": "10.1%",
+      "transferAcceptanceRate": "9.6%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$70",
+      "appFeeInternational": "$70",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 5500,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.tufts.edu/",
+      "essayUrl": "https://admissions.tufts.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Tulane University",
+      "domain": "tulane.edu",
+      "acceptanceRate": "14.6%",
+      "transferAcceptanceRate": "26.5%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 8500,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.tulane.edu/",
+      "essayUrl": "https://admissions.tulane.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Tuskegee University",
+      "domain": "tuskegee.edu",
+      "acceptanceRate": "85.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 2500,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.tuskegee.edu/",
+      "essayUrl": "https://admissions.tuskegee.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of Texas at Austin",
+      "domain": "utexas.edu",
+      "acceptanceRate": "29.1%",
+      "transferAcceptanceRate": "36.8%",
+      "applicationSystems": [
+        "ApplyTexas"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Required",
+      "academicCalendar": "Semester",
+      "overallPopulation": 41000,
+      "inStateTuition": "$11,000",
+      "outOfStateTuition": "$40,000",
+      "admissionsUrl": "https://admissions.utexas.edu/",
+      "essayUrl": "https://admissions.utexas.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Vanderbilt University",
+      "domain": "vanderbilt.edu",
+      "acceptanceRate": "6.3%",
+      "transferAcceptanceRate": "29.7%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$50",
+      "appFeeInternational": "$50",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 7000,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.vanderbilt.edu/",
+      "essayUrl": "https://admissions.vanderbilt.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Vassar College",
+      "domain": "vassar.edu",
+      "acceptanceRate": "25.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 2400,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.vassar.edu/",
+      "essayUrl": "https://admissions.vassar.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Villanova University",
+      "domain": "villanova.edu",
+      "acceptanceRate": "31.7%",
+      "transferAcceptanceRate": "31.7%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 6900,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.villanova.edu/",
+      "essayUrl": "https://admissions.villanova.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of Virginia",
+      "domain": "virginia.edu",
+      "acceptanceRate": "18.7%",
+      "transferAcceptanceRate": "39.7%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 17000,
+      "inStateTuition": "$19,000",
+      "outOfStateTuition": "$54,000",
+      "admissionsUrl": "https://admissions.virginia.edu/",
+      "essayUrl": "https://admissions.virginia.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Virginia Tech",
+      "domain": "vt.edu",
+      "acceptanceRate": "70.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Institution-specific Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 29000,
+      "inStateTuition": "$19,000",
+      "outOfStateTuition": "$54,000",
+      "admissionsUrl": "https://admissions.vt.edu/",
+      "essayUrl": "https://admissions.vt.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Wake Forest University",
+      "domain": "wfu.edu",
+      "acceptanceRate": "21.6%",
+      "transferAcceptanceRate": "24.7%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 5200,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.wfu.edu/",
+      "essayUrl": "https://admissions.wfu.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of Washington",
+      "domain": "washington.edu",
+      "acceptanceRate": "56.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Coalition Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Quarter",
+      "overallPopulation": 35000,
+      "inStateTuition": "$12,000",
+      "outOfStateTuition": "$40,000",
+      "admissionsUrl": "https://admissions.washington.edu/",
+      "essayUrl": "https://admissions.washington.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Washington University in St Louis",
+      "domain": "wustl.edu",
+      "acceptanceRate": "11.9%",
+      "transferAcceptanceRate": "20.2%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 7500,
+      "inStateTuition": "$12,000",
+      "outOfStateTuition": "$40,000",
+      "admissionsUrl": "https://admissions.wustl.edu/",
+      "essayUrl": "https://admissions.wustl.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Wellesley College",
+      "domain": "wellesley.edu",
+      "acceptanceRate": "16.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision I",
+        "Early Decision II",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 2400,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.wellesley.edu/",
+      "essayUrl": "https://admissions.wellesley.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "College of William and Mary",
+      "domain": "wm.edu",
+      "acceptanceRate": "32.7%",
+      "transferAcceptanceRate": "44.9%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Decision",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 6200,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.wm.edu/",
+      "essayUrl": "https://admissions.wm.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "University of Wisconsin Madison",
+      "domain": "wisc.edu",
+      "acceptanceRate": "57.0%",
+      "transferAcceptanceRate": "51.7%",
+      "applicationSystems": [
+        "Institution-specific Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 35000,
+      "inStateTuition": "$11,000",
+      "outOfStateTuition": "$39,000",
+      "admissionsUrl": "https://admissions.wisc.edu/",
+      "essayUrl": "https://admissions.wisc.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Worcester Polytechnic Institute",
+      "domain": "wpi.edu",
+      "acceptanceRate": "57.0%",
+      "transferAcceptanceRate": "N/A%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$75",
+      "appFeeInternational": "$75",
+      "decisionTypes": [
+        "Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Quarter",
+      "overallPopulation": 4500,
+      "inStateTuition": "$12,000",
+      "outOfStateTuition": "$30,000",
+      "admissionsUrl": "https://admissions.wpi.edu/",
+      "essayUrl": "https://admissions.wpi.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    },
+    {
+      "name": "Yale University",
+      "domain": "yale.edu",
+      "acceptanceRate": "4.5%",
+      "transferAcceptanceRate": "1.2%",
+      "applicationSystems": [
+        "Common Application"
+      ],
+      "appFeeDomestic": "$80",
+      "appFeeInternational": "$80",
+      "decisionTypes": [
+        "Single Choice Early Action",
+        "Regular Decision"
+      ],
+      "testPolicy": "Test-Optional",
+      "academicCalendar": "Semester",
+      "overallPopulation": 6000,
+      "inStateTuition": "$60,000",
+      "outOfStateTuition": "$60,000",
+      "admissionsUrl": "https://admissions.yale.edu/",
+      "essayUrl": "https://admissions.yale.edu/essays/",
+      "lastUpdated": "2024-07-14",
+      "dataSources": [
+        "Common Data Set",
+        "College Board",
+        "US News & World Report",
+        "Institution Website",
+        "National Student Clearinghouse"
+      ]
+    }
+  ],
+  "metadata": {
+    "totalColleges": 84,
+    "lastUpdated": "2024-07-14",
+    "dataVersion": "1.0",
+    "notes": "Acceptance rates and other data are approximate and based on most recent available information. Always verify current information with institution websites.",
+    "disclaimers": [
+      "Acceptance rates may vary by academic year and application cycle",
+      "Tuition costs are estimates and subject to change",
+      "Test policies may be updated - check individual college websites",
+      "Transfer acceptance rates can vary significantly by major and applicant pool"
+    ]
+  }
+}
