@@ -7,27 +7,16 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-
-interface College {
-  name: string;
-  location: string;
-  type: string;
-  acceptanceRate: number;
-  tuition?: number; // For private schools
-  tuitionInState?: number; // For public schools
-  tuitionOutOfState?: number; // For public schools
-  enrollment: number;
-  domain?: string;
-}
+import { collegeDatabase, CollegeInfo } from '@/lib/college-database';
 
 interface CollegeSearchProps {
-  onAddCollege: (college: College) => void;
+  onAddCollege: (college: CollegeInfo) => void;
   existingColleges: string[];
 }
 
 export function CollegeSearch({ onAddCollege, existingColleges }: CollegeSearchProps) {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<College[]>([]);
+  const [results, setResults] = useState<CollegeInfo[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
@@ -38,68 +27,31 @@ export function CollegeSearch({ onAddCollege, existingColleges }: CollegeSearchP
         setShowResults(false);
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   useEffect(() => {
-    const searchColleges = async () => {
-      if (query.trim().length < 2) {
-        setResults([]);
-        setShowResults(false);
-        return;
-      }
-
-      setIsLoading(true);
-      try {
-        const response = await fetch(`/api/colleges/search?q=${encodeURIComponent(query)}&limit=8`);
-        if (response.ok) {
-          const data = await response.json();
-          setResults(data);
-          setShowResults(true);
-        }
-      } catch (error) {
-        console.error('Error searching colleges:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    const debounceTimer = setTimeout(searchColleges, 300);
-    return () => clearTimeout(debounceTimer);
+    if (query.trim().length < 2) {
+      setResults([]);
+      setShowResults(false);
+      return;
+    }
+    setIsLoading(true);
+    // Use the new collegeDatabase for suggestions
+    const filtered = collegeDatabase.filter(college =>
+      college.name.toLowerCase().includes(query.toLowerCase()) ||
+      college.location.toLowerCase().includes(query.toLowerCase())
+    ).slice(0, 8);
+    setResults(filtered);
+    setShowResults(true);
+    setIsLoading(false);
   }, [query]);
 
-  const handleAddCollege = (college: College) => {
-    // Transform the college data to include all necessary fields
-    const collegeData = {
-      name: college.name,
-      location: college.location,
-      type: college.type,
-      acceptanceRate: college.acceptanceRate,
-      enrollment: college.enrollment,
-      tuition: college.tuition,
-      tuitionInState: college.tuitionInState,
-      tuitionOutOfState: college.tuitionOutOfState,
-      domain: college.domain,
-    };
-    
-    onAddCollege(collegeData);
+  const handleAddCollege = (college: CollegeInfo) => {
+    onAddCollege(college);
     setQuery('');
     setShowResults(false);
-  };
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(amount);
-  };
-
-  const formatNumber = (num: number) => {
-    return new Intl.NumberFormat('en-US').format(num);
   };
 
   return (
@@ -125,7 +77,6 @@ export function CollegeSearch({ onAddCollege, existingColleges }: CollegeSearchP
           </button>
         )}
       </div>
-
       {showResults && (
         <Card className="absolute top-full left-0 right-0 mt-1 z-50 max-h-96 overflow-y-auto shadow-lg">
           <div className="p-2">
@@ -162,27 +113,9 @@ export function CollegeSearch({ onAddCollege, existingColleges }: CollegeSearchP
                           </div>
                           <p className="text-xs text-muted-foreground mb-1">{college.location}</p>
                           <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                            <span>{college.type}</span>
-                            {college.acceptanceRate && (
-                              <span>{college.acceptanceRate}% acceptance</span>
-                            )}
-                            {college.type === 'Public' ? (
-                              <>
-                                {college.tuitionInState && (
-                                  <span>In-state: {formatCurrency(college.tuitionInState)}/year</span>
-                                )}
-                                {college.tuitionOutOfState && (
-                                  <span>Out-of-state: {formatCurrency(college.tuitionOutOfState)}/year</span>
-                                )}
-                              </>
-                            ) : (
-                              college.tuition && (
-                                <span>{formatCurrency(college.tuition)}/year</span>
-                              )
-                            )}
-                            {college.enrollment && (
-                              <span>{formatNumber(college.enrollment)} students</span>
-                            )}
+                            <span>App Fee: {college.appFee}</span>
+                            <span>Acceptance: {college.freshmanAcceptanceRate}</span>
+                            <span>Pop: {college.undergradPopulation}</span>
                           </div>
                         </div>
                         {!isAlreadyAdded && (

@@ -10,7 +10,8 @@
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "gen:db": "tsx scripts/generate-college-database.ts"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.9.1",
@@ -27,12 +28,14 @@
     "@radix-ui/react-tabs": "^1.1.12",
     "@stripe/stripe-js": "^7.3.1",
     "@uploadthing/react": "^7.3.1",
+    "axios": "^1.10.0",
     "bcryptjs": "^3.0.2",
+    "cheerio": "^1.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.515.0",
     "next": "15.3.3",
-    "next-auth": "^4.24.11",
+    "next-auth": "^4.24.7",
     "openai": "^5.3.0",
     "prisma": "^6.9.0",
     "react": "^19.0.0",
