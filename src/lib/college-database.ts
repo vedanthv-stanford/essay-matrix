@@ -5,7 +5,7 @@ const collegeMetadata = collegeMetadataRaw.colleges;
 export interface CollegeInfo {
   name: string;
   usNewsRank?: number; // Not present in JSON, so optional
-  location?: string;   // Not present in JSON, so optional
+  location?: string;   // Now present in JSON
   applicationSystems: string;
   appFeeDomestic: string;
   decisionTypes: string;
@@ -25,7 +25,8 @@ export interface CollegeInfo {
 // Map the JSON data to the CollegeInfo interface
 export const collegeDatabase: CollegeInfo[] = (collegeMetadata as any[]).map((c) => ({
   name: c.name,
-  // usNewsRank and location are not present in the new JSON, so we leave them undefined
+  // usNewsRank is not present in the new JSON, so we leave it undefined
+  location: c.location || '', // Map the location field
   applicationSystems: Array.isArray(c.applicationSystems) ? c.applicationSystems.join(', ') : (c.applicationSystems || ''),
   appFeeDomestic: c.appFeeDomestic || '',
   decisionTypes: Array.isArray(c.decisionTypes) ? c.decisionTypes.join(', ') : (c.decisionTypes || ''),
@@ -33,7 +34,7 @@ export const collegeDatabase: CollegeInfo[] = (collegeMetadata as any[]).map((c)
   transferAcceptanceRate: c.transferAcceptanceRate || '',
   testPolicy: c.testPolicy || '',
   academicCalendar: c.academicCalendar || '',
-  undergradPopulation2022: c.overallPopulation !== undefined && c.overallPopulation !== null ? c.overallPopulation.toString() : '',
+  undergradPopulation2022: c.undergradPopulation !== undefined && c.undergradPopulation !== null ? c.undergradPopulation.toString() : '',
   inStateCOA: c.inStateTuition || '',
   outOfStateCOA: c.outOfStateTuition || '',
   domain: c.domain,
