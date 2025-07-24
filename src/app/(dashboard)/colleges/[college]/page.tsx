@@ -8,6 +8,7 @@ export default function CollegePage({ params }: { params: { college: string } })
   // Try to find the college in metadata (case-insensitive, trimmed)
   const collegeMeta = collegeMetadata.colleges.find((c: any) => c.name.trim().toLowerCase() === collegeName.trim().toLowerCase());
   if (!collegeMeta) return notFound();
+  console.log(collegeMeta);
   // Find all essays for this college (case-insensitive match)
   const essays = collegeEssays.filter((e: any) => e.college.trim().toLowerCase() === collegeMeta.name.trim().toLowerCase());
 
