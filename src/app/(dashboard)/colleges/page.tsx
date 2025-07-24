@@ -13,6 +13,9 @@ import { CollegeLogo } from '@/components/ui/college-logo';
 import { LucideMapPin, LucideKey, LucideDollarSign, LucideClipboardList, LucidePercentCircle, LucideCheckCircle2, LucideUsers, LucideBadgeDollarSign, LucideBadgePercent } from 'lucide-react';
 import { collegeDatabase, CollegeInfo as College } from '@/lib/college-database';
 import { Checkbox } from '@/components/ui/checkbox';
+import collegeMetadata from '@/lib/college_metadata.json';
+import collegeEssays from '@/lib/college-essays.json';
+import { slugify } from '@/lib/essay-utils';
 
 const statusOptions = ['All', 'In Progress', 'Applied', 'Accepted', 'Rejected', 'Waitlisted'];
 
@@ -24,7 +27,10 @@ const CollegeCard = ({ college, status, ranking, onUpdateStatus, onDelete, onEdi
           <CollegeLogo collegeName={college.name} size={40} />
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
-              <h3 className="font-semibold text-lg truncate">{college.name}</h3>
+              {/* Only the college name is clickable, and uses slugify for the link */}
+              <Link href={`/college/${slugify(college.name)}`} className="font-semibold text-lg truncate hover:underline">
+                {college.name}
+              </Link>
               {ranking && (
                 <Badge variant="outline" className="text-xs">{ranking}</Badge>
               )}
@@ -63,12 +69,36 @@ const CollegeCard = ({ college, status, ranking, onUpdateStatus, onDelete, onEdi
   );
 };
 
+// Helper: Get unique college names from essay prompts
+const essayCollegeNames = Array.from(new Set(collegeEssays.map((e: any) => e.college)));
+// Helper: Get metadata colleges that have essay prompts, mapped to CollegeInfo type
+// Show every college from the metadata list, not just those with essay prompts
+const metadataCollegesRaw = collegeMetadata.colleges;
+const metadataColleges: College[] = metadataCollegesRaw.map((c: any) => ({
+  name: c.name,
+  location: c.location || '',
+  applicationSystems: Array.isArray(c.applicationSystems) ? c.applicationSystems.join(', ') : (c.applicationSystems || ''),
+  appFeeDomestic: c.appFeeDomestic || '',
+  decisionTypes: Array.isArray(c.decisionTypes) ? c.decisionTypes.join(', ') : (c.decisionTypes || ''),
+  freshmanAcceptanceRate: c.acceptanceRate || '',
+  transferAcceptanceRate: c.transferAcceptanceRate || '',
+  testPolicy: c.testPolicy || '',
+  academicCalendar: c.academicCalendar || '',
+  undergradPopulation2022: c.undergradPopulation !== undefined && c.undergradPopulation !== null ? c.undergradPopulation.toString() : '',
+  inStateCOA: c.inStateTuition || '',
+  outOfStateCOA: c.outOfStateTuition || '',
+  domain: c.domain,
+  admissionsUrl: c.admissionsUrl,
+  essayUrl: c.essayUrl,
+  id: c.id,
+}));
+
 export default function CollegesPage() {
   // Local state for colleges and their statuses/rankings
-  const [colleges, setColleges] = useState<College[]>(collegeDatabase);
+  const [colleges, setColleges] = useState<College[]>(metadataColleges);
   const [statusMap, setStatusMap] = useState<{ [name: string]: string }>({});
   const [rankingMap, setRankingMap] = useState<{ [name: string]: string }>({});
-  const [filteredColleges, setFilteredColleges] = useState<College[]>(collegeDatabase);
+  const [filteredColleges, setFilteredColleges] = useState<College[]>(metadataColleges);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedStatus, setSelectedStatus] = useState('All');
   const [selectedRanking, setSelectedRanking] = useState('All');
