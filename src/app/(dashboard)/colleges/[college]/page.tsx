@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic';
 import collegeEssays from '@/lib/college-essays.json';
 import collegeMetadata from '@/lib/college_metadata.json';
 import { notFound } from 'next/navigation';
+import { getCollegeBackgroundStyle } from '@/lib/college-background-utils';
 
 export default function CollegePage({ params }: { params: { college: string } }) {
   const collegeName = decodeURIComponent(params.college);
@@ -12,8 +13,25 @@ export default function CollegePage({ params }: { params: { college: string } })
   const essays = collegeEssays.filter((e: any) => e.college.trim().toLowerCase() === collegeMeta.name.trim().toLowerCase());
 
   return (
-    <div className="max-w-2xl mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-4">{collegeMeta.name}</h1>
+    <div className="max-w-2xl mx-auto">
+      {/* Hero Section */}
+      <div className="relative h-64 overflow-hidden rounded-lg mb-8">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={getCollegeBackgroundStyle(collegeMeta.name)}
+        >
+          <div className="absolute inset-0 bg-black/30" />
+        </div>
+        
+        <div className="relative z-10 flex items-end h-full p-6">
+          <div className="text-white">
+            <h1 className="text-3xl font-bold mb-2">{collegeMeta.name}</h1>
+            <div className="text-lg opacity-90">{collegeMeta.location}</div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="py-8">
       <div className="mb-6 text-muted-foreground">
         <div><b>Location:</b> {collegeMeta.location}</div>
         <div><b>Acceptance Rate:</b> {collegeMeta.acceptanceRate}</div>
@@ -38,6 +56,7 @@ export default function CollegePage({ params }: { params: { college: string } })
         <hr className="my-2" />
         <div>Debug: Essays found: {essays.length}</div>
         <div>Debug: College name used for matching: "{collegeMeta.name}"</div>
+      </div>
       </div>
     </div>
   );
