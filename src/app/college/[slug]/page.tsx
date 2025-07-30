@@ -15,12 +15,14 @@ import {
   CheckCircle,
   Clock,
   GraduationCap,
-  Award
+  Award,
+  ArrowLeft
 } from 'lucide-react';
 import { slugify, essaysBySlug } from '@/lib/essay-utils';
 import { notFound } from 'next/navigation';
 import collegeMetadata from '@/lib/college_metadata.json';
 import { getCollegeBackgroundStyle } from '@/lib/college-background-utils';
+import Link from 'next/link';
 
 export const dynamicParams = false;
 export async function generateStaticParams() {
@@ -65,6 +67,16 @@ export default function CollegePage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-neutral-900 via-neutral-800 to-black">
+      {/* Back Button */}
+      <div className="absolute top-4 left-4 z-20">
+        <Button variant="outline" asChild className="bg-black/50 backdrop-blur-sm border-white/20 text-white hover:bg-white/10">
+          <Link href="/colleges" className="flex items-center gap-2">
+            <ArrowLeft className="h-4 w-4" />
+            Back to Colleges
+          </Link>
+        </Button>
+      </div>
+
       {/* Hero Section */}
       <div className="relative h-96 overflow-hidden">
         <div 
