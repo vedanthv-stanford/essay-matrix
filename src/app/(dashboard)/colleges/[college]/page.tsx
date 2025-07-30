@@ -3,6 +3,9 @@ import collegeEssays from '@/lib/college-essays.json';
 import collegeMetadata from '@/lib/college_metadata.json';
 import { notFound } from 'next/navigation';
 import { getCollegeBackgroundStyle } from '@/lib/college-background-utils';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 
 export default function CollegePage({ params }: { params: { college: string } }) {
   const collegeName = decodeURIComponent(params.college);
@@ -14,6 +17,16 @@ export default function CollegePage({ params }: { params: { college: string } })
 
   return (
     <div className="max-w-2xl mx-auto">
+      {/* Back Button */}
+      <div className="mb-6 p-4 border rounded-lg bg-card">
+        <Button variant="outline" asChild>
+          <Link href="/colleges" className="flex items-center gap-2">
+            <ArrowLeft className="h-4 w-4" />
+            Back to Colleges
+          </Link>
+        </Button>
+      </div>
+
       {/* Hero Section */}
       <div className="relative h-64 overflow-hidden rounded-lg mb-8">
         <div 
