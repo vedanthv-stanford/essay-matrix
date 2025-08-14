@@ -1,13 +1,26 @@
 import { NextResponse } from "next/server";
 import { currentUser } from "@clerk/nextjs/server";
-import { db } from "@/lib/db";
+import { db, getUserByClerkId, upsertUserFromClerk } from "@/lib/db";
 
 export async function POST() {
   try {
-    const user = await currentUser();
+    const clerkUser = await currentUser();
     
-    if (!user) {
+    if (!clerkUser) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    // Get or create user in our database
+    let user = await getUserByClerkId(clerkUser.id);
+    if (!user) {
+      // User doesn't exist yet - create them with basic info
+      user = await upsertUserFromClerk({
+        id: clerkUser.id,
+        email: clerkUser.emailAddresses[0]?.emailAddress || '',
+        firstName: 'User',
+        lastName: '',
+        imageUrl: clerkUser.imageUrl,
+      });
     }
 
     // Mark onboarding as complete

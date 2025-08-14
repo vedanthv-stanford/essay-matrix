@@ -1,20 +1,17 @@
 import { NextResponse } from "next/server";
 import { currentUser } from "@clerk/nextjs/server";
-import { db } from "@/lib/db";
+import { db, getUserByClerkId } from "@/lib/db";
 
 export async function GET() {
   try {
-    const user = await currentUser();
+    const clerkUser = await currentUser();
     
-    if (!user) {
+    if (!clerkUser) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // Get user's onboarding status
-    const dbUser = await db.user.findUnique({
-      where: { id: user.id },
-      select: { onboardingCompleted: true },
-    });
+    // Get user's onboarding status using clerkId
+    const dbUser = await getUserByClerkId(clerkUser.id);
     console.log('DB user:', dbUser);
     console.log('Returning onboardingCompleted:', dbUser?.onboardingCompleted === true);
 

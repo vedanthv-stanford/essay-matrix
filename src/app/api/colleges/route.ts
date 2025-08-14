@@ -1,38 +1,75 @@
 import { NextResponse } from 'next/server';
-import { db } from '@/lib/db';
+import { db, getUserByClerkId, upsertUserFromClerk } from '@/lib/db';
+import { auth } from '@clerk/nextjs/server';
 
 export async function GET(request: Request) {
   try {
+    const { userId: clerkUserId } = await auth();
+    
+    if (!clerkUserId) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    // Get or create user in our database
+    let user = await getUserByClerkId(clerkUserId);
+    if (!user) {
+      // User doesn't exist yet - create them with basic info
+      const clerkUser = await auth();
+      if (clerkUser.userId) {
+        user = await upsertUserFromClerk({
+          id: clerkUser.userId,
+          email: '', // Will be handled by upsertUserFromClerk
+          firstName: 'User',
+          lastName: '',
+          imageUrl: '',
+        });
+      }
+    }
+
+    if (!user) {
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+    }
+
     const { searchParams } = new URL(request.url);
-    const userId = searchParams.get('userId');
+    const status = searchParams.get('status');
+    const type = searchParams.get('type');
     
-    // For development, if no userId is provided, use the test user
-    const targetUserId = userId || 'test-user-id';
+    // Build where clause with user isolation
+    const whereClause: any = { userId: user.id };
     
-    // First try to find the test user, if not found, create one
-    let testUser = await db.user.findUnique({
-      where: { email: 'test@example.com' }
-    });
+    if (status) {
+      whereClause.status = status;
+    }
     
-    if (!testUser) {
-      // Create test user if it doesn't exist
-      testUser = await db.user.create({
-        data: {
-          email: 'test@example.com',
-          name: 'Test User',
-          graduationYear: 2025,
-          highSchoolName: 'Test High School',
-          intendedMajor: 'Computer Science',
-        }
-      });
+    if (type) {
+      whereClause.type = type;
     }
 
     const colleges = await db.college.findMany({
-      where: { userId: testUser.id },
+      where: whereClause,
       orderBy: [
         { priority: 'asc' },
         { createdAt: 'desc' }
       ],
+      include: {
+        essays: {
+          select: {
+            id: true,
+            title: true,
+            wordCount: true,
+            createdAt: true,
+          }
+        },
+        essayPrompts: {
+          select: {
+            id: true,
+            title: true,
+            wordLimit: true,
+            required: true,
+            category: true,
+          }
+        }
+      }
     });
     
     return NextResponse.json(colleges);
@@ -44,50 +81,84 @@ export async function GET(request: Request) {
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { userId, name, ...collegeData } = body;
+    const { userId: clerkUserId } = await auth();
     
-    // For development, if no userId is provided, use the test user
-    let targetUserId = userId;
-    
-    if (!targetUserId) {
-      let testUser = await db.user.findUnique({
-        where: { email: 'test@example.com' }
-      });
-      
-      if (!testUser) {
-        testUser = await db.user.create({
-          data: {
-            email: 'test@example.com',
-            name: 'Test User',
-            graduationYear: 2025,
-            highSchoolName: 'Test High School',
-            intendedMajor: 'Computer Science',
-          }
-        });
-      }
-      
-      targetUserId = testUser.id;
+    if (!clerkUserId) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
+
+    const body = await req.json();
+    const { name, ...collegeData } = body;
     
     if (!name) {
       return NextResponse.json({ error: 'College name is required' }, { status: 400 });
     }
 
+    // Get or create user in our database
+    let user = await getUserByClerkId(clerkUserId);
+    if (!user) {
+      // User doesn't exist yet - create them with basic info
+      const clerkUser = await auth();
+      if (clerkUser.userId) {
+        user = await upsertUserFromClerk({
+          id: clerkUser.userId,
+          email: '', // Will be handled by upsertUserFromClerk
+          firstName: 'User',
+          lastName: '',
+          imageUrl: '',
+        });
+      }
+    }
+
+    if (!user) {
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+    }
+
+    // Check if college already exists for this user
+    const existingCollege = await db.college.findFirst({
+      where: {
+        userId: user.id,
+        name: name
+      }
+    });
+
+    if (existingCollege) {
+      return NextResponse.json({ 
+        error: 'College already exists for this user',
+        existingCollegeId: existingCollege.id
+      }, { status: 409 });
+    }
+
     const college = await db.college.create({
       data: {
-        userId: targetUserId,
+        userId: user.id,
         name,
         ...collegeData,
+      },
+      include: {
+        essays: {
+          select: {
+            id: true,
+            title: true,
+            wordCount: true,
+            createdAt: true,
+          }
+        },
+        essayPrompts: {
+          select: {
+            id: true,
+            title: true,
+            wordLimit: true,
+            required: true,
+            category: true,
+          }
+        }
       }
     });
     
-    return NextResponse.json(college);
+    return NextResponse.json(college, { status: 201 });
   } catch (error: any) {
     console.error('Error creating college:', error);
-    if (error.code === 'P2002') {
-      return NextResponse.json({ error: 'College already exists for this user' }, { status: 409 });
-    }
     return NextResponse.json({ error: 'Failed to create college' }, { status: 500 });
   }
 } 

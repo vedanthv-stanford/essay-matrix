@@ -4,15 +4,14 @@ import { NextResponse } from "next/server";
 const isPublicRoute = createRouteMatcher([
   "/",
   "/landing",
-  "/api/webhook/clerk",
+  "/api/logo",
   "/sign-up(.*)",
   "/colleges",
 ]);
 
 export default clerkMiddleware((auth, req) => {
-  console.log("MIDDLEWARE: path=", req.nextUrl.pathname);
-  
-  // Allow all requests to pass through - let Clerk handle auth in components
+  // Basic middleware - let Clerk handle authentication
+  // User synchronization will be handled in individual API routes
   return NextResponse.next();
 });
 

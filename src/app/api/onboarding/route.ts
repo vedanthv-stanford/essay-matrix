@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { currentUser } from "@clerk/nextjs/server";
-import { db } from "@/lib/db";
+import { db, upsertUserFromClerk } from "@/lib/db";
 
 export async function POST(request: NextRequest) {
   try {
-    const user = await currentUser();
+    const clerkUser = await currentUser();
     
-    if (!user) {
+    if (!clerkUser) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -20,54 +20,26 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check if user already exists in our database by ID or email
-    const existingUserById = await db.user.findUnique({
-      where: { id: user.id },
+    // Create or update user in our database using Clerk data
+    const user = await upsertUserFromClerk({
+      id: clerkUser.id,
+      email: clerkUser.emailAddresses[0]?.emailAddress || '',
+      firstName: name.split(' ')[0] || name,
+      lastName: name.split(' ').slice(1).join(' ') || '',
+      imageUrl: clerkUser.imageUrl,
     });
 
-    const userEmail = user.emailAddresses[0]?.emailAddress || "";
-    const existingUserByEmail = userEmail ? await db.user.findUnique({
-      where: { email: userEmail },
-    }) : null;
+    // Update the user with onboarding data
+    await db.user.update({
+      where: { id: user.id },
+      data: {
+        name,
+        isInternational,
+        onboardingCompleted: true,
+      },
+    });
 
-    if (existingUserById) {
-      // Update existing user
-      await db.user.update({
-        where: { id: user.id },
-        data: {
-          name,
-          isInternational,
-        },
-      });
-    } else if (existingUserByEmail) {
-      // User exists with same email but different ID - this could be from a deleted Clerk user
-      // Delete the old record and create a new one with the current Clerk ID
-      await db.user.delete({
-        where: { email: userEmail },
-      });
-      
-      // Create new user with current Clerk ID
-      await db.user.create({
-        data: {
-          id: user.id,
-          name,
-          email: userEmail,
-          isInternational,
-        },
-      });
-    } else {
-      // Create new user
-      await db.user.create({
-        data: {
-          id: user.id,
-          name,
-          email: userEmail,
-          isInternational,
-        },
-      });
-    }
-
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, user });
   } catch (error) {
     console.error("Error in onboarding API:", error);
     return NextResponse.json(

@@ -11,15 +11,42 @@ import Link from 'next/link'
 import { CollegeSearch } from '@/components/college-search'
 import { CollegeLogo } from '@/components/ui/college-logo';
 import { LucideMapPin, LucideKey, LucideDollarSign, LucideClipboardList, LucidePercentCircle, LucideCheckCircle2, LucideUsers, LucideBadgeDollarSign, LucideBadgePercent } from 'lucide-react';
-import { collegeDatabase, CollegeInfo as College } from '@/lib/college-database';
 import { Checkbox } from '@/components/ui/checkbox';
-import collegeMetadata from '@/lib/college_metadata.json';
-import collegeEssays from '@/lib/college-essays.json';
 import { slugify } from '@/lib/essay-utils';
+
+// Define the College type for user data
+interface UserCollege {
+  id: string;
+  name: string;
+  status: string;
+  priority: number;
+  type: string;
+  location?: string;
+  applicationSystems?: string;
+  appFeeDomestic?: string;
+  decisionTypes?: string;
+  freshmanAcceptanceRate?: string;
+  transferAcceptanceRate?: string;
+  testPolicy?: string;
+  academicCalendar?: string;
+  undergradPopulation2022?: string;
+  inStateCOA?: string;
+  outOfStateCOA?: string;
+  domain?: string;
+  admissionsUrl?: string;
+  essayUrl?: string;
+  createdAt: string;
+  updatedAt: string;
+}
 
 const statusOptions = ['All', 'In Progress', 'Applied', 'Accepted', 'Rejected', 'Waitlisted'];
 
-const CollegeCard = ({ college, status, ranking, onUpdateStatus, onDelete, onEdit }: { college: College, status: string, ranking?: string, onUpdateStatus: (name: string, status: string) => void, onDelete: (name: string) => void, onEdit: (college: College) => void }) => {
+const CollegeCard = ({ college, onUpdateStatus, onDelete, onEdit }: { 
+  college: UserCollege, 
+  onUpdateStatus: (id: string, status: string) => void, 
+  onDelete: (id: string) => void, 
+  onEdit: (college: UserCollege) => void 
+}) => {
   return (
     <Card className="p-4 bg-card border border-border rounded-xl shadow-md">
       <div className="flex items-center justify-between">
@@ -27,29 +54,41 @@ const CollegeCard = ({ college, status, ranking, onUpdateStatus, onDelete, onEdi
           <CollegeLogo collegeName={college.name} size={40} />
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
-              {/* Only the college name is clickable, and uses slugify for the link */}
               <Link href={`/college/${slugify(college.name)}`} className="font-semibold text-lg truncate hover:underline">
                 {college.name}
               </Link>
-              {ranking && (
-                <Badge variant="outline" className="text-xs">{ranking}</Badge>
-              )}
-              <Badge className="text-xs bg-blue-900 text-blue-200 ml-2">{status}</Badge>
+              <Badge className="text-xs bg-blue-900 text-blue-200 ml-2">{college.status}</Badge>
             </div>
             <div className="flex flex-wrap gap-x-6 gap-y-2 mt-1 text-sm items-center">
-              <span className="flex items-center gap-1"><LucideMapPin className="w-4 h-4 text-pink-500" />{college.location}</span>
-              <span className="flex items-center gap-1"><LucideKey className="w-4 h-4 text-yellow-500" />App Fee: {college.appFeeDomestic}</span>
-              <span className="flex items-center gap-1"><LucideClipboardList className="w-4 h-4 text-blue-400" />{college.decisionTypes}</span>
-              <span className="flex items-center gap-1"><LucidePercentCircle className="w-4 h-4 text-green-500" />{college.freshmanAcceptanceRate}</span>
-              <span className="flex items-center gap-1"><LucideCheckCircle2 className="w-4 h-4 text-emerald-500" />{college.testPolicy}</span>
-              <span className="flex items-center gap-1"><LucideUsers className="w-4 h-4 text-indigo-500" />{college.undergradPopulation2022}</span>
-              <span className="flex items-center gap-1"><LucideBadgeDollarSign className="w-4 h-4 text-orange-500" />In-State: {college.inStateCOA}</span>
-              <span className="flex items-center gap-1"><LucideBadgePercent className="w-4 h-4 text-fuchsia-500" />OOS: {college.outOfStateCOA}</span>
+              {college.location && (
+                <span className="flex items-center gap-1"><LucideMapPin className="w-4 h-4 text-pink-500" />{college.location}</span>
+              )}
+              {college.appFeeDomestic && (
+                <span className="flex items-center gap-1"><LucideKey className="w-4 h-4 text-yellow-500" />App Fee: {college.appFeeDomestic}</span>
+              )}
+              {college.decisionTypes && (
+                <span className="flex items-center gap-1"><LucideClipboardList className="w-4 h-4 text-blue-400" />{college.decisionTypes}</span>
+              )}
+              {college.freshmanAcceptanceRate && (
+                <span className="flex items-center gap-1"><LucidePercentCircle className="w-4 h-4 text-green-500" />{college.freshmanAcceptanceRate}</span>
+              )}
+              {college.testPolicy && (
+                <span className="flex items-center gap-1"><LucideCheckCircle2 className="w-4 h-4 text-emerald-500" />{college.testPolicy}</span>
+              )}
+              {college.undergradPopulation2022 && (
+                <span className="flex items-center gap-1"><LucideUsers className="w-4 h-4 text-indigo-500" />{college.undergradPopulation2022}</span>
+              )}
+              {college.inStateCOA && (
+                <span className="flex items-center gap-1"><LucideBadgeDollarSign className="w-4 h-4 text-orange-500" />In-State: {college.inStateCOA}</span>
+              )}
+              {college.outOfStateCOA && (
+                <span className="flex items-center gap-1"><LucideBadgePercent className="w-4 h-4 text-fuchsia-500" />OOS: {college.outOfStateCOA}</span>
+              )}
             </div>
           </div>
         </div>
         <div className="flex flex-col gap-2 items-end">
-          <Select value={status} onValueChange={(newStatus) => onUpdateStatus(college.name, newStatus)}>
+          <Select value={college.status} onValueChange={(newStatus) => onUpdateStatus(college.id, newStatus)}>
             <SelectTrigger className="w-32 h-8">
               <SelectValue />
             </SelectTrigger>
@@ -61,7 +100,7 @@ const CollegeCard = ({ college, status, ranking, onUpdateStatus, onDelete, onEdi
           </Select>
           <div className="flex gap-2 mt-2">
             <Button variant="outline" size="sm" onClick={() => onEdit(college)}>Edit</Button>
-            <Button variant="outline" size="sm" onClick={() => onDelete(college.name)}>Delete</Button>
+            <Button variant="outline" size="sm" onClick={() => onDelete(college.id)}>Delete</Button>
           </div>
         </div>
       </div>
@@ -69,105 +108,172 @@ const CollegeCard = ({ college, status, ranking, onUpdateStatus, onDelete, onEdi
   );
 };
 
-// Helper: Get unique college names from essay prompts
-const essayCollegeNames = Array.from(new Set(collegeEssays.map((e: any) => e.college)));
-// Helper: Get metadata colleges that have essay prompts, mapped to CollegeInfo type
-// Show every college from the metadata list, not just those with essay prompts
-const metadataCollegesRaw = collegeMetadata.colleges;
-const metadataColleges: College[] = metadataCollegesRaw.map((c: any) => ({
-  name: c.name,
-  location: c.location || '',
-  applicationSystems: Array.isArray(c.applicationSystems) ? c.applicationSystems.join(', ') : (c.applicationSystems || ''),
-  appFeeDomestic: c.appFeeDomestic || '',
-  decisionTypes: Array.isArray(c.decisionTypes) ? c.decisionTypes.join(', ') : (c.decisionTypes || ''),
-  freshmanAcceptanceRate: c.acceptanceRate || '',
-  transferAcceptanceRate: c.transferAcceptanceRate || '',
-  testPolicy: c.testPolicy || '',
-  academicCalendar: c.academicCalendar || '',
-  undergradPopulation2022: c.undergradPopulation !== undefined && c.undergradPopulation !== null ? c.undergradPopulation.toString() : '',
-  inStateCOA: c.inStateTuition || '',
-  outOfStateCOA: c.outOfStateTuition || '',
-  domain: c.domain,
-  admissionsUrl: c.admissionsUrl,
-  essayUrl: c.essayUrl,
-  id: c.id,
-}));
-
 export default function CollegesPage() {
-  // Local state for colleges and their statuses/rankings
-  const [colleges, setColleges] = useState<College[]>(metadataColleges);
-  const [statusMap, setStatusMap] = useState<{ [name: string]: string }>({});
-  const [rankingMap, setRankingMap] = useState<{ [name: string]: string }>({});
-  const [filteredColleges, setFilteredColleges] = useState<College[]>(metadataColleges);
+  // State for user's colleges
+  const [colleges, setColleges] = useState<UserCollege[]>([]);
+  const [filteredColleges, setFilteredColleges] = useState<UserCollege[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedStatus, setSelectedStatus] = useState('All');
-  const [selectedRanking, setSelectedRanking] = useState('All');
   const [showSearch, setShowSearch] = useState(false);
   const [selectedColleges, setSelectedColleges] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Select all handler
-  const allVisibleCollegeNames = filteredColleges.map(c => c.name);
-  const isAllSelected = allVisibleCollegeNames.length > 0 && allVisibleCollegeNames.every(name => selectedColleges.includes(name));
-  const isIndeterminate = selectedColleges.length > 0 && !isAllSelected;
+  // Fetch user's colleges on component mount
+  useEffect(() => {
+    fetchUserColleges();
+  }, []);
 
+  const fetchUserColleges = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch('/api/colleges');
+      if (response.ok) {
+        const userColleges = await response.json();
+        setColleges(userColleges);
+        setFilteredColleges(userColleges);
+      } else {
+        console.error('Failed to fetch colleges');
+      }
+    } catch (error) {
+      console.error('Error fetching colleges:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Filter colleges based on search and status
   useEffect(() => {
     let currentColleges = colleges;
+    
     if (searchQuery) {
       currentColleges = currentColleges.filter(college =>
         college.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (college.location && college.location.toLowerCase().includes(searchQuery.toLowerCase()))
       );
     }
+    
+    if (selectedStatus !== 'All') {
+      currentColleges = currentColleges.filter(college => college.status === selectedStatus);
+    }
+    
     setFilteredColleges(currentColleges);
-  }, [searchQuery, colleges]);
+  }, [searchQuery, selectedStatus, colleges]);
 
-  const handleUpdateStatus = (name: string, status: string) => {
-    setStatusMap(prev => ({ ...prev, [name]: status }));
+  const handleUpdateStatus = async (id: string, status: string) => {
+    try {
+      const response = await fetch(`/api/colleges/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status }),
+      });
+      
+      if (response.ok) {
+        setColleges(prev => prev.map(college => 
+          college.id === id ? { ...college, status } : college
+        ));
+      }
+    } catch (error) {
+      console.error('Error updating college status:', error);
+    }
   };
 
-  const handleDeleteCollege = (name: string) => {
-    setColleges(prevColleges => prevColleges.filter(college => college.name !== name));
-    setFilteredColleges(prevFiltered => prevFiltered.filter(college => college.name !== name));
-    setStatusMap(prev => { const copy = { ...prev }; delete copy[name]; return copy; });
-    setRankingMap(prev => { const copy = { ...prev }; delete copy[name]; return copy; });
+  const handleDeleteCollege = async (id: string) => {
+    try {
+      const response = await fetch(`/api/colleges/${id}`, {
+        method: 'DELETE',
+      });
+      
+      if (response.ok) {
+        setColleges(prev => prev.filter(college => college.id !== id));
+        setSelectedColleges(prev => prev.filter(collegeId => collegeId !== id));
+      }
+    } catch (error) {
+      console.error('Error deleting college:', error);
+    }
   };
 
-  const handleAddCollege = (newCollege: College) => {
-    setColleges(prevColleges => [...prevColleges, newCollege]);
-    setFilteredColleges(prevFiltered => [...prevFiltered, newCollege]);
-    setShowSearch(false);
+  const handleAddCollege = async (newCollege: any) => {
+    try {
+      const response = await fetch('/api/colleges', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: newCollege.name,
+          status: 'In Progress',
+          type: 'target',
+          priority: 1,
+          location: newCollege.location || '',
+          applicationSystems: newCollege.applicationSystems || '',
+          appFeeDomestic: newCollege.appFeeDomestic || '',
+          decisionTypes: newCollege.decisionTypes || '',
+          freshmanAcceptanceRate: newCollege.freshmanAcceptanceRate || '',
+          transferAcceptanceRate: newCollege.transferAcceptanceRate || '',
+          testPolicy: newCollege.testPolicy || '',
+          academicCalendar: newCollege.academicCalendar || '',
+          undergradPopulation2022: newCollege.undergradPopulation2022 || '',
+          inStateCOA: newCollege.inStateCOA || '',
+          outOfStateCOA: newCollege.outOfStateCOA || '',
+          domain: newCollege.domain || '',
+          admissionsUrl: newCollege.admissionsUrl || '',
+          essayUrl: newCollege.essayUrl || '',
+        }),
+      });
+      
+      if (response.ok) {
+        const addedCollege = await response.json();
+        setColleges(prev => [...prev, addedCollege]);
+        setShowSearch(false);
+      }
+    } catch (error) {
+      console.error('Error adding college:', error);
+    }
   };
 
-  const handleEditCollege = (college: College) => {
+  const handleEditCollege = (college: UserCollege) => {
     // Placeholder for edit modal
     console.log('Edit college:', college);
   };
 
-  const handleSelectCollege = (name: string, checked: boolean) => {
+  const handleSelectCollege = (id: string, checked: boolean) => {
     setSelectedColleges(prev =>
-      checked ? [...prev, name] : prev.filter(n => n !== name)
+      checked ? [...prev, id] : prev.filter(collegeId => collegeId !== id)
     );
   };
 
   const handleSelectAll = (checked: boolean) => {
-    setSelectedColleges(checked ? allVisibleCollegeNames : []);
+    setSelectedColleges(checked ? filteredColleges.map(c => c.id) : []);
   };
 
-  const handleDeleteSelected = () => {
-    setColleges(prevColleges => prevColleges.filter(college => !selectedColleges.includes(college.name)));
-    setFilteredColleges(prevFiltered => prevFiltered.filter(college => !selectedColleges.includes(college.name)));
-    setStatusMap(prev => {
-      const copy = { ...prev };
-      selectedColleges.forEach(name => { delete copy[name]; });
-      return copy;
-    });
-    setRankingMap(prev => {
-      const copy = { ...prev };
-      selectedColleges.forEach(name => { delete copy[name]; });
-      return copy;
-    });
-    setSelectedColleges([]);
+  const handleDeleteSelected = async () => {
+    try {
+      // Delete all selected colleges
+      await Promise.all(
+        selectedColleges.map(id => 
+          fetch(`/api/colleges/${id}`, { method: 'DELETE' })
+        )
+      );
+      
+      // Remove from local state
+      setColleges(prev => prev.filter(college => !selectedColleges.includes(college.id)));
+      setSelectedColleges([]);
+    } catch (error) {
+      console.error('Error deleting selected colleges:', error);
+    }
   };
+
+  const isAllSelected = filteredColleges.length > 0 && filteredColleges.every(college => selectedColleges.includes(college.id));
+  const isIndeterminate = selectedColleges.length > 0 && !isAllSelected;
+
+  if (isLoading) {
+    return (
+      <div className="flex h-64 items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Loading your colleges...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -178,6 +284,7 @@ export default function CollegesPage() {
           Add College
         </Button>
       </div>
+      
       {selectedColleges.length > 0 && (
         <div className="flex items-center gap-4 mb-2">
           <Button variant="destructive" onClick={handleDeleteSelected}>
@@ -185,6 +292,7 @@ export default function CollegesPage() {
           </Button>
         </div>
       )}
+      
       {showSearch && (
         <Card className="p-4 mb-4">
           <h3 className="text-lg font-medium mb-4">Search for a College</h3>
@@ -194,45 +302,75 @@ export default function CollegesPage() {
           />
         </Card>
       )}
+      
+      {/* Search and Filter */}
+      <div className="flex gap-4">
+        <div className="flex-1">
+          <Input
+            placeholder="Search colleges..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="max-w-sm"
+          />
+        </div>
+        <Select value={selectedStatus} onValueChange={setSelectedStatus}>
+          <SelectTrigger className="w-40">
+            <SelectValue placeholder="Filter by status" />
+          </SelectTrigger>
+          <SelectContent>
+            {statusOptions.map((status) => (
+              <SelectItem key={status} value={status}>{status}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
       {/* Colleges List */}
       <div className="space-y-4">
         {filteredColleges.length === 0 ? (
-          <Card className="p-8 text-center">
-            <h3 className="text-lg font-medium text-foreground mb-2">
-              {colleges.length === 0 ? 'No colleges added yet' : 'No colleges found'}
+          <div className="text-center py-12">
+            <GraduationCap className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+            <h3 className="text-lg font-medium text-muted-foreground mb-2">
+              {searchQuery || selectedStatus !== 'All' ? 'No colleges match your filters' : 'No colleges added yet'}
             </h3>
             <p className="text-muted-foreground mb-4">
-              {colleges.length === 0 
-                ? 'Start building your college list by adding your first university.'
-                : 'Try adjusting your filters to see more colleges.'
+              {searchQuery || selectedStatus !== 'All' 
+                ? 'Try adjusting your search or filters' 
+                : 'Start building your college list by adding your first college'
               }
             </p>
-          </Card>
+            {!searchQuery && selectedStatus === 'All' && (
+              <Button onClick={() => setShowSearch(true)}>
+                <Plus className="h-4 w-4 mr-2" />
+                Add Your First College
+              </Button>
+            )}
+          </div>
         ) : (
           <>
-            <div className="flex items-center gap-2 mb-2">
-              <Checkbox
-                checked={isAllSelected ? true : isIndeterminate ? 'indeterminate' : false}
-                onCheckedChange={handleSelectAll}
-                id="select-all-colleges"
-              />
-              <label htmlFor="select-all-colleges" className="text-sm select-none cursor-pointer">
-                Select All
+            {/* Select All Checkbox */}
+            <div className="flex items-center space-x-2">
+                             <Checkbox
+                 id="select-all"
+                 checked={isAllSelected}
+                 onCheckedChange={handleSelectAll}
+               />
+              <label htmlFor="select-all" className="text-sm font-medium">
+                Select All ({filteredColleges.length})
               </label>
             </div>
+            
+            {/* College Cards */}
             {filteredColleges.map((college) => (
-              <div key={college.name} className="flex items-start gap-2">
+              <div key={college.id} className="flex items-center space-x-2">
                 <Checkbox
-                  checked={selectedColleges.includes(college.name)}
-                  onCheckedChange={checked => handleSelectCollege(college.name, !!checked)}
-                  id={`select-college-${college.name}`}
-                  className="mt-4"
+                  id={`college-${college.id}`}
+                  checked={selectedColleges.includes(college.id)}
+                  onCheckedChange={(checked) => handleSelectCollege(college.id, checked as boolean)}
                 />
                 <div className="flex-1">
                   <CollegeCard
                     college={college}
-                    status={statusMap[college.name] || 'In Progress'}
-                    ranking={rankingMap[college.name]}
                     onUpdateStatus={handleUpdateStatus}
                     onDelete={handleDeleteCollege}
                     onEdit={handleEditCollege}
