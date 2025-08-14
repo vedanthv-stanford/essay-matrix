@@ -1,11 +1,11 @@
-import React from 'react';
+const fs = require('fs');
+const path = require('path');
 
-/**
- * Utility functions for handling college background images
- */
+// Import the college database
+const collegeMetadata = require('../src/lib/college_metadata.json');
 
 // Comprehensive mapping for colleges with their exact filenames and extensions
-const COLLEGE_IMAGE_MAPPING: Record<string, string> = {
+const COLLEGE_IMAGE_MAPPING = {
   // Special characters and different naming
   'College of William & Mary': 'william&marycollege.jpg',
   'Texas A&M University': 'texasa&muniversity.jpg',
@@ -100,33 +100,7 @@ const COLLEGE_IMAGE_MAPPING: Record<string, string> = {
   'Yale University': 'yaleuniversity.webp',
 };
 
-export function getCollegeBackgroundImage(collegeName: string): string {
-  // Check if we have a special mapping for this college
-  if (COLLEGE_IMAGE_MAPPING[collegeName]) {
-    const mappedName = COLLEGE_IMAGE_MAPPING[collegeName];
-    // Try different formats for the mapped name
-    const formats = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
-    const imagePath = `/college-backgrounds/${mappedName}`;
-    console.log(`[College Background] Using mapped image: ${imagePath} for "${collegeName}"`);
-    return imagePath;
-  }
-  
-  const normalizedName = normalizeCollegeName(collegeName);
-  
-  // Try different image formats for the specific college
-  const formats = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
-  
-  // For now, return the first format - the browser will handle 404s gracefully
-  // In a production environment, you might want to pre-validate which files exist
-  const imagePath = `/college-backgrounds/${normalizedName}.${formats[0]}`;
-  
-  console.log(`[College Background] Loading: ${imagePath} for "${collegeName}"`);
-  return imagePath;
-}
-
-export function normalizeCollegeName(name: string): string {
-  // Convert college name to match the image naming convention
-  // First convert to lowercase and remove special characters except spaces
+function normalizeCollegeName(name) {
   let normalized = name
     .toLowerCase()
     .replace(/[^a-z0-9\s]/g, '') // Remove special characters but keep spaces
@@ -136,13 +110,56 @@ export function normalizeCollegeName(name: string): string {
   return normalized.replace(/\s+/g, '');
 }
 
-export function getCollegeBackgroundStyle(collegeName: string): React.CSSProperties {
-  const imagePath = getCollegeBackgroundImage(collegeName);
+function getCollegeImageName(collegeName) {
+  // Check if we have a special mapping for this college
+  if (COLLEGE_IMAGE_MAPPING[collegeName]) {
+    return COLLEGE_IMAGE_MAPPING[collegeName];
+  }
   
-  return {
-    backgroundImage: `url(${imagePath})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-  };
-} 
+  // For colleges without special mapping, try different formats
+  const normalizedName = normalizeCollegeName(collegeName);
+  const formats = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
+  return `${normalizedName}.${formats[0]}`;
+}
+
+function checkCollegeImages() {
+  const backgroundsDir = path.join(__dirname, '../public/college-backgrounds');
+  const existingFiles = fs.readdirSync(backgroundsDir)
+    .filter(file => !file.startsWith('.') && file !== 'README.md' && !file.endsWith('.zip'));
+
+  console.log('Checking college background images with improved mapping...\n');
+  
+  let missingImages = [];
+  let foundImages = [];
+  
+  collegeMetadata.colleges.forEach(college => {
+    const imageName = getCollegeImageName(college.name);
+    const hasImage = existingFiles.includes(imageName);
+    
+    if (hasImage) {
+      foundImages.push({ name: college.name, imageName: imageName });
+    } else {
+      missingImages.push({ name: college.name, imageName: imageName });
+    }
+  });
+  
+  console.log(`✅ Found images for ${foundImages.length} colleges:`);
+  foundImages.forEach(item => {
+    console.log(`  - ${item.name} → ${item.imageName}`);
+  });
+  
+  console.log(`\n❌ Missing images for ${missingImages.length} colleges:`);
+  missingImages.forEach(item => {
+    console.log(`  - ${item.name} → ${item.imageName}`);
+  });
+  
+  console.log(`\n📊 Summary: ${foundImages.length}/${collegeMetadata.colleges.length} colleges have background images (${Math.round(foundImages.length/collegeMetadata.colleges.length*100)}%)`);
+  
+  return { foundImages, missingImages };
+}
+
+if (require.main === module) {
+  checkCollegeImages();
+}
+
+module.exports = { checkCollegeImages, getCollegeImageName }; 
