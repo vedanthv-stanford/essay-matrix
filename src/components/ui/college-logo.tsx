@@ -32,14 +32,35 @@ export function CollegeLogo({
       setError(false);
       setErrorMsg(null);
       
+      // Check cache first
+      const cacheKey = `college_logo_cache_${collegeName.toLowerCase().replace(/\s+/g, '_')}_${size}_${highQuality}`;
       try {
-        // Use our server-side API route with size parameter
+        const cached = localStorage.getItem(cacheKey);
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          const now = Date.now();
+          // Cache for 7 days
+          if (now - parsed.timestamp < 7 * 24 * 60 * 60 * 1000) {
+            console.log(`[CollegeLogo] Using cached logo for ${collegeName}`);
+            setLogoUrl(parsed.url);
+            setIsLoading(false);
+            return;
+          }
+          // Cache expired, remove it
+          localStorage.removeItem(cacheKey);
+        }
+      } catch (error) {
+        console.warn('Failed to parse cached logo:', error);
+        localStorage.removeItem(cacheKey);
+      }
+      
+      try {
+        // Use our server-side API route without cache busting
         const params = new URLSearchParams({ 
           name: collegeName,
           size: size.toString(),
           format: 'png',
-          highQuality: highQuality.toString(), // Use the prop value
-          _t: Date.now().toString() // Cache busting parameter
+          highQuality: highQuality.toString()
         });
         if (domain) params.append('domain', domain);
         
@@ -52,6 +73,20 @@ export function CollegeLogo({
           const blob = await response.blob();
           const url = URL.createObjectURL(blob);
           setLogoUrl(url);
+          
+          // Cache the logo as data URL
+          const reader = new FileReader();
+          reader.onload = () => {
+            const dataUrl = reader.result as string;
+            const cached = {
+              url: dataUrl,
+              timestamp: Date.now(),
+              size,
+              highQuality
+            };
+            localStorage.setItem(cacheKey, JSON.stringify(cached));
+          };
+          reader.readAsDataURL(blob);
         } else {
           setError(true);
           const err = await response.json().catch(() => ({}));
