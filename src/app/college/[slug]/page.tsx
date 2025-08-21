@@ -21,6 +21,7 @@ import {
 import { slugify, essaysBySlug } from '@/lib/essay-utils';
 import { notFound } from 'next/navigation';
 import collegeMetadata from '@/lib/college_metadata.json';
+import collegeRequirements from '@/lib/college-app-requirement.json';
 import { getCollegeBackgroundStyle } from '@/lib/college-background-utils';
 import Link from 'next/link';
 
@@ -37,18 +38,66 @@ export default function CollegePage({ params }: { params: { slug: string } }) {
   
   const prompts = essaysBySlug[params.slug] ?? [];
 
-  // Application requirements based on college data
+  // Get college-specific requirements
+  const collegeReq = collegeRequirements.colleges[college.name];
+  
+  // Fallback if college requirements not found
+  if (!collegeReq) {
+    console.warn(`College requirements not found for: ${college.name}`);
+  }
+  
+  // Application requirements based on actual college data
   const applicationRequirements = [
-    { id: 'common-app', label: 'Common Application', completed: true },
-    { id: 'transcript', label: 'Official High School Transcript', completed: true },
-    { id: 'test-scores', label: `SAT/ACT Scores (${college.testPolicy})`, completed: false },
-    { id: 'recommendations', label: '2 Teacher Recommendations', completed: false },
-    { id: 'counselor-rec', label: '1 Counselor Recommendation', completed: false },
-    { id: 'essays', label: 'Personal Statement + College Essays', completed: false },
-    { id: 'activities', label: 'Activities List', completed: true },
-    { id: 'supplements', label: 'Additional Supplements', completed: false },
-    { id: 'interview', label: 'Optional Interview', completed: false },
-    { id: 'portfolio', label: 'Portfolio (if applicable)', completed: false }
+    { 
+      id: 'common-app', 
+      label: collegeReq?.commonApp ? 'Common Application (Required)' : 'Common Application (Not Required)', 
+      completed: collegeReq?.commonApp || false 
+    },
+    { 
+      id: 'transcript', 
+      label: 'Official High School Transcript', 
+      completed: collegeReq?.highSchoolTranscript || false 
+    },
+    { 
+      id: 'test-scores', 
+      label: `SAT/ACT Scores (${college.testPolicy})`, 
+      completed: collegeReq?.satActScores || false 
+    },
+    { 
+      id: 'recommendations', 
+      label: collegeReq?.teacherRecommendations ? '2 Teacher Recommendations (Required)' : '2 Teacher Recommendations (Not Required)', 
+      completed: collegeReq?.teacherRecommendations || false 
+    },
+    { 
+      id: 'counselor-rec', 
+      label: collegeReq?.counselorRecommendation ? '1 Counselor Recommendation (Required)' : '1 Counselor Recommendation (Not Required)', 
+      completed: collegeReq?.counselorRecommendation || false 
+    },
+    { 
+      id: 'essays', 
+      label: 'Personal Statement + College Essays', 
+      completed: collegeReq?.personalStatementEssays || false 
+    },
+    { 
+      id: 'activities', 
+      label: 'Activities List', 
+      completed: collegeReq?.activitiesList || false 
+    },
+    { 
+      id: 'supplements', 
+      label: collegeReq?.additionalSupplements ? 'Additional Supplements (Required)' : 'Additional Supplements (Not Required)', 
+      completed: collegeReq?.additionalSupplements || false 
+    },
+    { 
+      id: 'interview', 
+      label: collegeReq?.optionalInterview ? 'Optional Interview (Available)' : 'Optional Interview (Not Available)', 
+      completed: collegeReq?.optionalInterview || false 
+    },
+    { 
+      id: 'portfolio', 
+      label: 'Portfolio (if applicable)', 
+      completed: collegeReq?.portfolio || false 
+    }
   ];
 
   // Organize essay prompts into categories
