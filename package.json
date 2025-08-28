@@ -7,10 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "migrate:supabase": "node scripts/migrate-to-supabase.js",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
     "db:studio": "prisma studio",
+    "db:reset": "prisma db push --force-reset",
     "gen:db": "tsx scripts/generate-college-database.ts"
   },
   "dependencies": {
@@ -29,6 +31,7 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-tabs": "^1.1.12",
     "@stripe/stripe-js": "^7.3.1",
+    "@supabase/supabase-js": "^2.55.0",
     "@uploadthing/react": "^7.3.1",
     "axios": "^1.10.0",
     "bcryptjs": "^3.0.2",

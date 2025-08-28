@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -27,6 +27,7 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@index([userId])
 }
 
 model Session {
@@ -35,12 +36,14 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model User {
   id              String    @id @default(cuid())
   name            String?
-  email           String    @unique
+  email           String?   // Remove @unique constraint and make optional
   emailVerified   DateTime?
   image           String?
   graduationYear  Int?
@@ -51,6 +54,8 @@ model User {
   // Onboarding fields
   isInternational Boolean?  // true for international, false for domestic
   onboardingCompleted Boolean @default(false)
+  // Clerk integration
+  clerkId         String?   @unique // Add Clerk ID for authentication
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 
@@ -60,6 +65,23 @@ model User {
   activities   Activity[]
   essays       Essay[]
   subscription Subscription?
+  settings     UserSettings?
+
+  @@index([clerkId])
+  @@index([email])
+}
+
+model UserSettings {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  theme           String   @default("light") // light, dark, auto
+  notifications   Boolean  @default(true)
+  privacyLevel    String   @default("private") // private, friends, public
+  emailUpdates    Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken {
@@ -87,6 +109,21 @@ model College {
   notes         String?  // User notes about the college
   priority      Int?     // User's priority ranking (1 = highest)
   deadline      DateTime? // Application deadline
+  
+  // Additional fields for comprehensive college data
+  applicationSystems String?  // Common App, Coalition, etc.
+  appFeeDomestic     String?  // Application fee for domestic students
+  decisionTypes      String?  // Early Decision, Regular Decision, etc.
+  freshmanAcceptanceRate String? // Freshman acceptance rate
+  transferAcceptanceRate String? // Transfer acceptance rate
+  testPolicy         String?  // Test-optional, test-required, etc.
+  academicCalendar   String?  // Semester, Quarter, etc.
+  undergradPopulation2022 String? // Undergraduate population
+  inStateCOA         String?  // Cost of attendance in-state
+  outOfStateCOA      String?  // Cost of attendance out-of-state
+  admissionsUrl      String?  // Admissions page URL
+  essayUrl           String?  // Essay requirements page URL
+  
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
@@ -95,6 +132,9 @@ model College {
   essayPrompts EssayPrompt[]
 
   @@unique([userId, name])
+  @@index([userId, status])
+  @@index([userId, priority])
+  @@index([userId, deadline])
 }
 
 model Activity {
@@ -112,6 +152,9 @@ model Activity {
   updatedAt             DateTime @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, type])
+  @@index([userId, organization])
 }
 
 model Essay {
@@ -127,6 +170,9 @@ model Essay {
 
   college College @relation(fields: [collegeId], references: [id], onDelete: Cascade)
   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, collegeId])
+  @@index([userId, createdAt])
 }
 
 model EssayPrompt {
@@ -162,4 +208,7 @@ model Subscription {
   updatedAt         DateTime @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, plan])
+  @@index([status])
 } 

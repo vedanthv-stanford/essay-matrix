@@ -48,51 +48,53 @@ export default function OnboardingPage() {
   };
 
   return (
-    <Card className="w-full">
-      <CardHeader className="text-center">
-        <CardTitle className="text-2xl font-bold">Welcome!</CardTitle>
-        <CardDescription>
-          Let's get to know you better to personalize your experience
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="space-y-2">
-          <Label htmlFor="name">Full Name</Label>
-          <Input
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Enter your full name"
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader className="text-center">
+          <CardTitle className="text-2xl font-bold">Welcome!</CardTitle>
+          <CardDescription>
+            Let's get to know you better to personalize your experience
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div className="space-y-2">
+            <Label htmlFor="name">Full Name</Label>
+            <Input
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter your full name"
+              className="w-full"
+            />
+          </div>
+
+          <div className="space-y-3">
+            <Label>Are you an international or domestic student?</Label>
+            <RadioGroup
+              value={isInternational === null ? "" : isInternational.toString()}
+              onValueChange={(value: string) => setIsInternational(value === "true")}
+              className="space-y-2"
+            >
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="false" id="domestic" />
+                <Label htmlFor="domestic">Domestic (US Citizen/Permanent Resident)</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="true" id="international" />
+                <Label htmlFor="international">International Student</Label>
+              </div>
+            </RadioGroup>
+          </div>
+
+          <Button
+            onClick={handleNext}
+            disabled={!name.trim() || isInternational === null || isLoading}
             className="w-full"
-          />
-        </div>
-
-        <div className="space-y-3">
-          <Label>Are you an international or domestic student?</Label>
-          <RadioGroup
-            value={isInternational === null ? "" : isInternational.toString()}
-            onValueChange={(value: string) => setIsInternational(value === "true")}
-            className="space-y-2"
           >
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="false" id="domestic" />
-              <Label htmlFor="domestic">Domestic (US Citizen/Permanent Resident)</Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="true" id="international" />
-              <Label htmlFor="international">International Student</Label>
-            </div>
-          </RadioGroup>
-        </div>
-
-        <Button
-          onClick={handleNext}
-          disabled={!name.trim() || isInternational === null || isLoading}
-          className="w-full"
-        >
-          {isLoading ? "Saving..." : "Next"}
-        </Button>
-      </CardContent>
-    </Card>
+            {isLoading ? "Saving..." : "Next"}
+          </Button>
+        </CardContent>
+      </Card>
+    </div>
   );
-} 
+}

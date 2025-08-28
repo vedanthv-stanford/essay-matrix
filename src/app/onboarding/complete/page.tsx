@@ -1,72 +1,69 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
 
 export default function OnboardingCompletePage() {
+  const { user } = useUser();
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const completeOnboarding = async () => {
-      try {
-        const response = await fetch("/api/onboarding/complete", {
-          method: "POST",
-        });
+  const handleComplete = async () => {
+    setIsLoading(true);
 
-        if (response.ok) {
-          setIsLoading(false);
-        } else {
-          console.error("Failed to complete onboarding");
-        }
-      } catch (error) {
-        console.error("Error completing onboarding:", error);
+    try {
+      const response = await fetch("/api/onboarding/complete", {
+        method: "POST",
+      });
+
+      if (response.ok) {
+        // Redirect to dashboard after completion
+        router.push("/colleges");
+      } else {
+        console.error("Failed to complete onboarding");
       }
-    };
-
-    completeOnboarding();
-  }, []);
-
-  const handleGetStarted = () => {
-    router.push("/colleges");
+    } catch (error) {
+      console.error("Error completing onboarding:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <Card className="w-full">
-      <CardHeader className="text-center">
-        <div className="flex justify-center mb-4">
-          <CheckCircle className="h-16 w-16 text-green-500" />
-        </div>
-        <CardTitle className="text-2xl font-bold">Welcome to Your Dashboard!</CardTitle>
-        <CardDescription>
-          Your profile has been set up successfully. You're all ready to start your college application journey.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="text-center space-y-2">
-          <p className="text-sm text-muted-foreground">
-            You can now:
-          </p>
-          <ul className="text-sm text-muted-foreground space-y-1">
-            <li>• Browse and search colleges</li>
-            <li>• Track your application progress</li>
-            <li>• Manage your activities and essays</li>
-            <li>• Get personalized recommendations</li>
-          </ul>
-        </div>
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader className="text-center">
+          <div className="mx-auto mb-4">
+            <CheckCircle className="h-16 w-16 text-green-500" />
+          </div>
+          <CardTitle className="text-2xl font-bold">You're All Set!</CardTitle>
+          <CardDescription>
+            Welcome to your college application journey
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div className="text-center space-y-2">
+            <p className="text-muted-foreground">
+              Your profile has been created and you're ready to start building your college list.
+            </p>
+            <p className="text-muted-foreground">
+              You'll be redirected to your dashboard where you can start adding colleges and tracking your applications.
+            </p>
+          </div>
 
-        <Button
-          onClick={handleGetStarted}
-          disabled={isLoading}
-          className="w-full"
-          size="lg"
-        >
-          {isLoading ? "Setting up your account..." : "Get Started"}
-        </Button>
-      </CardContent>
-    </Card>
+          <Button
+            onClick={handleComplete}
+            disabled={isLoading}
+            className="w-full"
+          >
+            {isLoading ? "Setting up..." : "Go to Dashboard"}
+          </Button>
+        </CardContent>
+      </Card>
+    </div>
   );
-} 
+}

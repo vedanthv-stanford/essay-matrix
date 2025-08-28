@@ -5,34 +5,19 @@ import { Button } from "@/components/ui/button";
 import { Sun, Moon } from "lucide-react";
 import { SignInButton, useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import { useTheme } from "@/contexts/theme-context";
 
 function DarkModeToggle() {
-  const [isDark, setIsDark] = React.useState(false);
-
-  React.useEffect(() => {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-      setIsDark(true);
-    } else {
-      document.documentElement.classList.remove('dark');
-      setIsDark(false);
-    }
-  }, []);
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   const toggleDark = () => {
-    setIsDark((prev) => {
-      const newDark = !prev;
-      if (newDark) {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-      }
-      return newDark;
-    });
+    // Toggle between light and dark (not auto)
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
   };
+
+  // Show sun when dark, moon when light
+  const isDark = resolvedTheme === 'dark';
 
   return (
     <Button variant="ghost" onClick={toggleDark} aria-label="Toggle dark mode" size="icon" className="absolute top-4 right-4">

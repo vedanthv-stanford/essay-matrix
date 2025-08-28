@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,13 +10,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export default function OnboardingStep2Page() {
+  const { user } = useUser();
   const router = useRouter();
   const [graduationYear, setGraduationYear] = useState("");
   const [highSchoolName, setHighSchoolName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  const currentYear = new Date().getFullYear();
-  const graduationYears = Array.from({ length: 6 }, (_, i) => currentYear + i);
 
   const handleNext = async () => {
     if (!graduationYear || !highSchoolName.trim()) {
@@ -48,59 +47,54 @@ export default function OnboardingStep2Page() {
     }
   };
 
+  const graduationYears = Array.from({ length: 8 }, (_, i) => new Date().getFullYear() + i);
+
   return (
-    <Card className="w-full">
-      <CardHeader className="text-center">
-        <CardTitle className="text-2xl font-bold">Academic Information</CardTitle>
-        <CardDescription>
-          Help us understand your academic background
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="space-y-2">
-          <Label htmlFor="graduationYear">Expected Graduation Year</Label>
-          <Select value={graduationYear} onValueChange={setGraduationYear}>
-            <SelectTrigger>
-              <SelectValue placeholder="Select graduation year" />
-            </SelectTrigger>
-            <SelectContent>
-              {graduationYears.map((year) => (
-                <SelectItem key={year} value={year.toString()}>
-                  {year}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader className="text-center">
+          <CardTitle className="text-2xl font-bold">Step 2 of 3</CardTitle>
+          <CardDescription>
+            Tell us about your academic background
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div className="space-y-2">
+            <Label htmlFor="graduationYear">Expected Graduation Year</Label>
+            <Select value={graduationYear} onValueChange={setGraduationYear}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select graduation year" />
+              </SelectTrigger>
+              <SelectContent>
+                {graduationYears.map((year) => (
+                  <SelectItem key={year} value={year.toString()}>
+                    {year}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="highSchoolName">High School Name</Label>
-          <Input
-            id="highSchoolName"
-            value={highSchoolName}
-            onChange={(e) => setHighSchoolName(e.target.value)}
-            placeholder="Enter your high school name"
-            className="w-full"
-          />
-        </div>
+          <div className="space-y-2">
+            <Label htmlFor="highSchoolName">High School Name</Label>
+            <Input
+              id="highSchoolName"
+              value={highSchoolName}
+              onChange={(e) => setHighSchoolName(e.target.value)}
+              placeholder="Enter your high school name"
+              className="w-full"
+            />
+          </div>
 
-        <div className="flex space-x-3">
-          <Button
-            variant="outline"
-            onClick={() => router.back()}
-            className="flex-1"
-          >
-            Back
-          </Button>
           <Button
             onClick={handleNext}
             disabled={!graduationYear || !highSchoolName.trim() || isLoading}
-            className="flex-1"
+            className="w-full"
           >
             {isLoading ? "Saving..." : "Next"}
           </Button>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </div>
   );
-} 
+}
