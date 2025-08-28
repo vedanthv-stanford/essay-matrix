@@ -1,6 +1,5 @@
-import { getServerSession } from 'next-auth';
-import authOptions from '../app/api/auth/[...nextauth]/route';
+import { auth } from '@clerk/nextjs/server';
 
 export const getSession = async () => {
-  return await getServerSession(authOptions);
+  return await auth();
 }; 
